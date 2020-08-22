@@ -1,0 +1,16 @@
+.container
+  %p.head-title Board
+  %hr/
+  %h2 Sign in
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'text'
+    .field
+      = f.label :password, class: 'text'
+      %br/
+      = f.password_field :password, autocomplete: "current-password", class: 'text'
+    .actions
+      = f.submit "Submit", class: 'btn-primary'
+  = render "devise/shared/links"

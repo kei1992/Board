@@ -1,0 +1,31 @@
+@import './variables';
+
+.actions{
+    position:relative;
+}
+
+.btn-primary{
+    background-color: $primary-color;
+    border: none;
+    width: 100%;
+    margin-bottom: 32px;
+    text-align: center;
+    color: white;
+    padding: 16px 0;
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    position:absolute;
+    top:402px;
+}
+
+.btn-secondary {
+    background-color: white;
+    border: solid 1px $primary-color;
+    width: 100%;
+    text-align: center;
+    color: $primary-color;
+    padding: 16px 0;
+    font-weight: bold;
+  }
