@@ -9,4 +9,12 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
-    = yield
+  %header.header
+    %p.header_pageTitle
+      = link_to 'Boards' ,root_path
+    .dropdown
+      = image_tag 'default-avatar.png', class: 'header_avatar dropbtn'
+      .dropdown-content
+        %a{:href => "#"} プロフィール
+        %a{:href => "#"} ログアウト
+  = yield
