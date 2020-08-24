@@ -1,0 +1,31 @@
+-# ERBコード
+-#<div class="container">
+-#   <%= form_with(model: @article, url: articles_path, method: 'post', local: true) do |f| %>
+-#     <div>
+-#       <%= f.label :title, 'タイトル' %>
+-#     </div>
+-#     <div>
+-#       <%= f.text_field :title, class: 'text' %>
+-#     </div>
+-#     <div>
+-#       <%= f.label :content, '内容' %>
+-#     </div>
+-#     <div>
+-#       <%= f.text_area :content %>
+-#     </div>
+-#     <%= f.submit '保存', class: 'btn-primary' %>
+-#   <% end %>
+-# </div>
+
+-# Hamlコード
+.container
+  = form_with(model: @board, url: boards_path, method: 'post', local: true) do |f|
+    %div
+      = f.label :title, 'Name'
+    %div
+      = f.text_field :title, class: 'text'
+    %div
+      = f.label :content, 'Description'
+    %div
+      = f.text_area :content
+    = f.submit '保存', class: 'btn-primary'
