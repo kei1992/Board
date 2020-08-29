@@ -1,11 +1,11 @@
 @import 'header';
-@import 'tabs';
 @import 'variables';
-// @import 'card';
-// @import 'article';
+@import 'card';
+// @import 'board';
 @import 'buttons';
 @import 'form';
-// @import 'flash';
+@import 'flash';
+@import 'common';
 
 html {
   word-spacing: 1px;
@@ -40,6 +40,22 @@ a{
   padding: 16px 16px;
   width: 100%;
   height:100%;
+}
+
+i {
+  margin-right: 10px;
+}
+
+.new_board{
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width:100%;
+}
+
+.board_button{
+  display:flex;
+  padding:68px 0 68px 0;
+  justify-content:center;
 }
 
 h2{

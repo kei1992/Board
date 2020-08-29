@@ -1,2 +1,24 @@
 .container
-    %h2 New Board
+  %h2 All Board
+  - @boards.each do |board|
+    .card
+      .card_content
+        .card_name
+          = board.name
+          .board_detail_actions
+            .dropdown
+              = image_tag 'actions.svg', class: 'dropbtn'
+              .dropdown-content.mini
+                = link_to 'Edit', edit_board_path(board)
+                = link_to 'Delete', board_path(board)
+        .card_description
+          = board.description
+        .card_detail
+          = image_tag board.user.avatar_image
+
+  -# new board作成
+  .new_board
+    = link_to new_board_path, class:'board_button' do
+      .float_btn
+        %i.fa.fa-plus
+      %p Add new board
