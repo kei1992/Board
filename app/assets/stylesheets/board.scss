@@ -1,0 +1,46 @@
+@import './variables';
+@import 'header';
+
+.board {
+  background-color:#F4F4F4;
+  border:1px solid #F4F4F4;
+  border-radius:10px;
+  margin: 16px 0;
+  cursor: pointer;
+
+  &_name {
+    font-size: 22px;
+    margin-bottom: 8px;
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #000000;
+  }
+
+  &_description{
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  &_detail {
+    padding-top: 12px;
+    display: flex;
+    font-size: 10px;
+
+
+    img {
+      width: $avatar-size;
+      height: $avatar-size;
+      border-radius: 100%;
+      margin-right: 8px;
+    }
+  }
+
+  &_content {
+    padding: 32px 16px;
+  }
+}
