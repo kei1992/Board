@@ -1,0 +1,18 @@
+.container
+  %h2
+    = @board.name
+  .card
+    .card_content
+      .card_name
+        = @tasks.name
+      .card_description
+        = @tasks.description
+      .card_detail
+        = image_tag @tasks.user.avatar_image
+
+  -# new task作成
+  .new_board
+    = link_to new_board_task_path(@board), class:'board_button' do
+      .float_btn
+        %i.fa.fa-plus
+      %p Add new card

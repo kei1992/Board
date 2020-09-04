@@ -1,0 +1,18 @@
+.container
+  %ul
+  - @task.errors.full_messages.each do |message|
+    %li= message
+
+
+  = form_with(model: @task, url: board_tasks_path, method: 'post', local: true) do |f|
+    %div
+      = f.label :name, 'Name'
+    %div
+      = f.text_field :name, class: 'text'
+    %div
+      = f.label :description, 'Description'
+    %div
+      = f.text_area :description
+    = f.submit '保存', class: 'btn-primary'
+
+  %p 後で期限フォームを追加するよ！

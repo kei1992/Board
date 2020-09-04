@@ -2,19 +2,20 @@
   %h2 All Board
   - @boards.each do |board|
     .card
-      .card_content
-        .card_name
-          = board.name
-          .board_detail_actions
-            .dropdown
-              = image_tag 'actions.svg', class: 'dropbtn'
-              .dropdown-content.mini
-                = link_to 'Edit', edit_board_path(board)
-                = link_to 'Delete', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '}
-        .card_description
-          = board.description
-        .card_detail
-          = image_tag board.user.avatar_image
+      = link_to board_path(board) do
+        .card_content
+          .card_name
+            = board.name
+            .board_detail_actions
+              .dropdown
+                = image_tag 'actions.svg', class: 'dropbtn'
+                .dropdown-content.mini
+                  = link_to 'Edit', edit_board_path(board)
+                  = link_to 'Delete', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '}
+          .card_description
+            = board.description
+          .card_detail
+            = image_tag board.user.avatar_image
 
   -# new board作成
   .new_board
