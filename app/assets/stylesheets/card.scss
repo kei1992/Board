@@ -36,6 +36,7 @@
     padding-top: 12px;
     display: flex;
     font-size: 10px;
+    position:relative;
 
 
     img {
@@ -43,6 +44,21 @@
       height: $avatar-size;
       border-radius: 100%;
       margin-right: 8px;
+    }
+
+    .card_btn{
+      position:absolute;
+      top:30px;
+      right:20px;
+      display:flex;
+      align-items: center;
+
+      p{
+        font-size: 14px;
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: normal;
+      }
     }
   }
 
