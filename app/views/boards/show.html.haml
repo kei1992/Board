@@ -1,14 +1,21 @@
 .container
   %h2
     = @board.name
-  .card
-    .card_content
-      .card_name
-        = @tasks.name
-      .card_description
-        = @tasks.description
-      .card_detail
-        = image_tag @tasks.user.avatar_image
+
+  - @tasks.each do |task|
+    .card
+      =link_to board_task_path(task) do
+        .card_content
+          .card_name
+            = task.name
+          .card_description
+            = task.description
+          .card_detail
+            = image_tag task.user.avatar_image
+            .card_btn
+              %p 23
+              %i.fa.fa-comments.fa-2x.fa-fw
+
 
   -# new task作成
   .new_board
