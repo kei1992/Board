@@ -1,0 +1,29 @@
+.task{
+    &_title{
+        display:flex;
+        position:relative;
+        align-items: center;
+        margin-bottom: 32px;
+
+        .task_name{
+            position:relative;
+            top:25px;
+        }
+
+        .board_detail.actions{
+            right: 8px;
+            top:25px;
+            position: absolute;
+        }
+    }
+}
+
+.task_eyecatch{
+    width:100%;
+    height:300px;
+    object-fit: cover;
+}
+
+.task_comment{
+    margin:35px 0 25px 0;
+}

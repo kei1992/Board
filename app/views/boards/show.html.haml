@@ -1,6 +1,5 @@
 .container
-  %h2
-    = @board.name
+  %h2= @board.name
 
   - @tasks.each do |task|
     .card

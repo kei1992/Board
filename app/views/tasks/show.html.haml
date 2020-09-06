@@ -1,0 +1,24 @@
+.container
+  .task
+    .task_title
+      %h2.task_name= @task.name
+      .board_detail.actions
+        .dropdown
+          = image_tag 'actions.svg',class:'dropbtn'
+          .dropdown-content.mini
+            %p Edit
+            %p Delete
+    = image_tag "task_sample.png" ,class: 'task_eyecatch'
+    .card
+      .card_content
+        .card_description
+          = @task.description
+
+  %h2.task_comment Comment
+
+  -# コメント投稿ボタン
+  .new_board
+    .board_button
+      .float_btn
+        %i.fa.fa-plus
+      %p Add new comment
