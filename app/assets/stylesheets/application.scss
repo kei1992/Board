@@ -1,7 +1,7 @@
 @import 'header';
 @import 'variables';
 @import 'card';
-// @import 'board';
+@import 'task';
 @import 'buttons';
 @import 'form';
 @import 'flash';
@@ -40,6 +40,7 @@ a{
   padding: 16px 16px;
   width: 100%;
   height:100%;
+  position:relative;
 }
 
 i {
@@ -63,5 +64,4 @@ h2{
   font-style: normal;
   font-weight: 800;
   font-size: 26px;
-  margin:92px 0 33px 0;
 }
