@@ -2,8 +2,9 @@ class TasksController < ApplicationController
     before_action :authenticate_user!
 
     def show
-      @board = Board.find(params[:id])
-      @task = @board.tasks.find(params[:board_id])
+      @board = Board.find(params[:board_id])
+      @task = @board.tasks.find(params[:task_id])
+      @comments = @task.comments
     end
 
     def new

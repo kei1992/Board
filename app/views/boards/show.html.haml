@@ -3,7 +3,7 @@
 
   - @tasks.each do |task|
     .card
-      =link_to board_task_path(task) do
+      =link_to board_task_path(@board,task) do
         .card_content
           .card_name
             = task.name
