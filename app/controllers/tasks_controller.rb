@@ -2,18 +2,17 @@ class TasksController < ApplicationController
     before_action :authenticate_user!
 
     def show
-      @board = Board.find(params[:board_id])
-      @task = @board.tasks.find(params[:task_id])
+      @task = Task.find(params[:id])
       @comments = @task.comments
     end
 
     def new
-      @board = Board.find(params[:board_id])
-      @task = @board.tasks.build()
+      @board = Board.find(params[:id])
+      @task = @board.tasks.build
     end
 
     def create
-      @board = Board.find(params[:board_id])
+      @board = Board.find(params[:id])
       @task = @board.tasks.build(task_params)
 
       if @task.save
