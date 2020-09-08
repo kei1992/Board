@@ -2,6 +2,7 @@ class TasksController < ApplicationController
     before_action :authenticate_user!
 
     def show
+      @board = Board.find(params[:board_id])
       @task = Task.find(params[:id])
       @comments = @task.comments
     end
@@ -21,6 +22,30 @@ class TasksController < ApplicationController
         flash.now[:error] = '更新できませんでした'
         render :new
       end
+    end
+
+    def edit
+      @board = Board.find(params[:board_id])
+      @task = current_user.tasks.find(params[:id])
+    end
+
+    def update
+      @board = Board.find(params[:board_id])
+      @task = current_user.tasks.find(params[:id])
+
+      if @task.update(task_params)
+        redirect_to board_task_path(@board,@task),notice: 'Completed Update'
+      else
+        flash.now[:error] = 'Failed Update'
+        render :edit
+      end
+    end
+
+    def destroy
+      board = Board.find(params[:board_id])
+      task = current_user.tasks.find(params[:id])
+      task.destroy
+      redirect_to board_path(board), notice:'Completed Destroy'
     end
 
     private

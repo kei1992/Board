@@ -6,8 +6,8 @@
         .dropdown
           = image_tag 'actions.svg',class:'dropbtn'
           .dropdown-content.mini
-            %p Edit
-            %p Delete
+            = link_to 'Edit', edit_board_task_path(@board,@task)
+            = link_to 'Delete', board_task_path(@board,@task), data:{method:'delete',confirm:'Are you sure you want to destroy?'}
     = image_tag "task_sample.png" ,class: 'task_eyecatch'
     .card
       .card_content
@@ -15,10 +15,17 @@
           = @task.description
 
   %h2.task_comment Comment
+  - @comments.each do |comment|
+    .comment
+      .comment_image
+        = image_tag 'default-avatar.png'
+      .comment_description
+        = comment.description
 
-  -# -# コメント投稿ボタン
-  -# .new_board
-  -#   = link_to new_board_task_comment_path(@comment), class:'board_button' do
-  -#     .float_btn
-  -#       %i.fa.fa-plus
-  -#     %p Add new comment
+
+  -# コメント投稿ボタン
+  .new_board
+    = link_to new_board_task_comment_path(@board.id,@task.id),class:'board_button' do
+      .float_btn
+        %i.fa.fa-plus
+      %p Add new comment
