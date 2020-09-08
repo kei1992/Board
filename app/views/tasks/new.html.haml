@@ -6,6 +6,10 @@
 
   = form_with(model: @task, url: board_tasks_path, method: 'post', local: true) do |f|
     %div
+      = f.label :eyecatch,'Eyecatch'
+    %div
+      = f.file_field :eyecatch
+    %div
       = f.label :name, 'Name'
     %div
       = f.text_field :name, class: 'text'
@@ -13,6 +17,6 @@
       = f.label :description, 'Description'
     %div
       = f.text_area :description
-    = f.submit '保存', class: 'btn-primary'
+    = f.submit 'Submit', class: 'btn-primary'
 
   %p 後で期限フォームを追加するよ！

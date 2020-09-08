@@ -3,14 +3,18 @@
         display:flex;
 
         img{
-            width:50%;
+            width:300px;
+            height:300px;
             margin-bottom: 50px;
+            border-radius:100%;
         }
     }
 }
 
 .profile_detail{
-    width:50%;
+    margin-left: 50px;
+    width:70%;
+
     .profile_nickname{
         margin-bottom: 30px;
     }
@@ -36,4 +40,8 @@
 .nickname, .introduction{
     padding:10px;
     border:1px solid #F4F4F4;
+}
+
+.profile_image_text{
+    margin-bottom: 30px;
 }

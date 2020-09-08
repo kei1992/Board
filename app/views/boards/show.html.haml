@@ -4,16 +4,19 @@
   - @tasks.each do |task|
     .card
       =link_to board_task_path(@board,task) do
-        .card_content
-          .card_name
-            = task.name
-          .card_description
-            = task.description
-          .card_detail
-            = image_tag task.user.avatar_image
-            .card_btn
-              %p 23
-              %i.fa.fa-comments.fa-2x.fa-fw
+        - if task.eyecatch&.attached?
+          = image_tag task.eyecatch, class:'task_eyecatch'
+        - else
+          = image_tag 'task_sample.png',class:'task_eyecatch'
+        .card_name
+          = task.name
+        .card_description
+          = task.description
+        .card_detail
+          = image_tag task.user.avatar_image
+          .card_btn
+            %p 23
+            %i.fa.fa-comments.fa-2x.fa-fw
 
 
   -# new task作成

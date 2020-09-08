@@ -8,7 +8,10 @@
           .dropdown-content.mini
             = link_to 'Edit', edit_board_task_path(@board,@task)
             = link_to 'Delete', board_task_path(@board,@task), data:{method:'delete',confirm:'Are you sure you want to destroy?'}
-    = image_tag "task_sample.png" ,class: 'task_eyecatch'
+    - if @task.eyecatch&.attached?
+      = image_tag @task.eyecatch, class:'task_eyecatch'
+    - else
+      = image_tag 'task_sample.png',class:'task_eyecatch'
     .card
       .card_content
         .card_description
@@ -18,7 +21,7 @@
   - @comments.each do |comment|
     .comment
       .comment_image
-        = image_tag 'default-avatar.png'
+        = image_tag current_user.avatar_image
       .comment_description
         = comment.description
 
