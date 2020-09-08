@@ -1,0 +1,39 @@
+.profile{
+    &_info{
+        display:flex;
+
+        img{
+            width:50%;
+            margin-bottom: 50px;
+        }
+    }
+}
+
+.profile_detail{
+    width:50%;
+    .profile_nickname{
+        margin-bottom: 30px;
+    }
+
+    .profile_introduction{
+        margin-bottom: 30px;
+    }
+}
+
+.profile_title{
+    font-size: 26px;
+    padding:10px;
+    width:100%;
+}
+
+.profile_edit{
+    font-size: 26px;
+    background-color: #F4F4F4;
+    border-radius:10px;
+    padding: 10px;;
+}
+
+.nickname, .introduction{
+    padding:10px;
+    border:1px solid #F4F4F4;
+}
