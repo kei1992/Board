@@ -17,9 +17,9 @@ class TasksController < ApplicationController
       @task = @board.tasks.build(task_params)
 
       if @task.save
-        redirect_to board_path(@board), notice: 'コメントを追加'
+        redirect_to board_path(@board), notice: 'Completed Upload'
       else
-        flash.now[:error] = '更新できませんでした'
+        flash.now[:error] = 'Failed Upload'
         render :new
       end
     end
@@ -50,6 +50,6 @@ class TasksController < ApplicationController
 
     private
     def task_params
-        params.require(:task).permit(:name,:description).merge(user_id: current_user.id)
+        params.require(:task).permit(:name,:description,:eyecatch).merge(user_id: current_user.id)
     end
 end

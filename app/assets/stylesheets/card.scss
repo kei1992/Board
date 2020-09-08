@@ -6,6 +6,7 @@
   border:1px solid #F4F4F4;
   border-radius:10px;
   margin: 16px 0;
+  padding:10px;
   cursor: pointer;
 
   &_name {
@@ -37,6 +38,7 @@
     display: flex;
     font-size: 10px;
     position:relative;
+    margin-bottom: 10px;
 
 
     img {
@@ -48,8 +50,8 @@
 
     .card_btn{
       position:absolute;
-      top:30px;
-      right:20px;
+      height: $avatar-size;
+      right:5px;
       display:flex;
       align-items: center;
 
