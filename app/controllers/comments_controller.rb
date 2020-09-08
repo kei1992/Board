@@ -1,7 +1,24 @@
 class CommentsController < ApplicationController
     def new
-        board = Board.find(params[:id])
-        task = board.tasks.find(params[:id])
+        task = Task.find(params[:task_id])
         @comment = task.comments.build()
+    end
+
+    def create
+        board = Board.find(params[:board_id])
+        task = Task.find(params[:task_id])
+        @comment = task.comments.build(comments_params)
+
+        if @comment.save
+            redirect_to board_task_path(board,task), notice:'Saved comment'
+        else
+            flash.now[:error] = 'Failed to save'
+            render :new
+        end
+    end
+
+    private
+    def comments_params
+        params.require(:comment).permit(:description).merge(user_id:current_user.id)
     end
 end

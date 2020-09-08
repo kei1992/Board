@@ -1,0 +1,21 @@
+@import 'header';
+
+.comment{
+    display:flex;
+    margin-bottom: 32px;
+
+    &_description{
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+    }
+
+    &_image{
+        img{
+            width: $avatar-size;
+            height: $avatar-size;
+            margin-right: 16px;
+        }
+    }
+}
