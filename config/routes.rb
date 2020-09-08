@@ -7,5 +7,5 @@ Rails.application.routes.draw do
       resources :comments, only:[:new ,:create, :update, :destroy]
     end
   end
-  resources :profile, only:[:show, :edit, :update]
+  resource :profile, only:[:show, :edit, :update]
 end

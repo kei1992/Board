@@ -1,7 +1,14 @@
-.container.profilePage
-  .profilePage_user
-    .profilePage_user_image
+.container
+  .profile
+    .profile_info
       = image_tag current_user.avatar_image
-    .profilePage_user_basicInfo
-      .profilePage_user_name
-        .profilePage_user_displayName
+      .profile_detail
+        .profile_nickname
+          %p.profile_title Nickname
+          .nickname
+            = @profile.nickname
+        .profile_introduction
+          %p.profile_title Introduction
+          .introduction
+            = @profile.introduction
+        = link_to 'Edit Profile',edit_profile_path, class:'profile_edit'

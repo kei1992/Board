@@ -5,15 +5,15 @@
 
   = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
     %div
-      = f.label :avatar, 'アバター'
+      = f.label :avatar, 'Profile Image'
     %div
       = f.file_field :avatar
     %div
-      = f.label :nickname, 'ハンドルネーム'
+      = f.label :nickname, 'Nickname'
     %div
       = f.text_field :nickname, class: 'text'
     %div
-      = f.label :introduction, '自己紹介'
+      = f.label :introduction, 'Introduction'
     %div
       = f.text_area :introduction
     = f.submit '保存', class: 'btn-primary'
