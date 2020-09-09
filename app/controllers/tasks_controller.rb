@@ -50,6 +50,6 @@ class TasksController < ApplicationController
 
     private
     def task_params
-        params.require(:task).permit(:name,:description,:eyecatch).merge(user_id: current_user.id)
+        params.require(:task).permit(:name,:description,:deadline,:eyecatch).merge(user_id: current_user.id)
     end
 end

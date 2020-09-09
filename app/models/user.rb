@@ -27,6 +27,18 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one :profile, dependent: :destroy
 
+  def has_written?(board)
+    boards.exists?(id: board.id)
+  end
+
+  def has_written_task?(board,task)
+    tasks.exists?(id: task.id)
+  end
+
+  def has_written_comment?(board,task)
+    comments.exists?(id: comment.id)
+  end
+
   def prepare_profile
     profile || build_profile
   end

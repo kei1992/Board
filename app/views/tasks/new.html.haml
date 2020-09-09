@@ -8,7 +8,7 @@
     %div
       = f.label :eyecatch,'Eyecatch'
     %div
-      = f.file_field :eyecatch
+      = f.file_field :eyecatch,class:'text'
     %div
       = f.label :name, 'Name'
     %div
@@ -17,6 +17,8 @@
       = f.label :description, 'Description'
     %div
       = f.text_area :description
+    %div
+      = f.label :deadline, 'Deadline'
+    %div
+      = f.date_field :deadline, class:'text'
     = f.submit 'Submit', class: 'btn-primary'
-
-  %p 後で期限フォームを追加するよ！
