@@ -1,14 +1,12 @@
 @import './variables';
 
-.actions{
-    position:relative;
-}
-
 .btn-primary{
     background-color: $primary-color;
     border: none;
+    border-radius:5px;
     width: 100%;
-    margin-bottom: 32px;
+    margin-top: 150px;
+    margin-bottom: 30px;
     text-align: center;
     color: white;
     padding: 16px 0;
@@ -16,9 +14,6 @@
     font-style: normal;
     font-weight: 800;
     font-size: 18px;
-    position:absolute;
-    top:839px;
-    left:0px;
 }
 
 .btn-secondary {

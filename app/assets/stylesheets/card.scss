@@ -25,6 +25,15 @@
     }
   }
 
+  &_deadline{
+    margin-top: 30px;
+
+    .card_deadline_text{
+      font-weight:bold;
+      font-size: 20px;
+    }
+  }
+
   &_description{
     font-family: Avenir;
     font-style: normal;

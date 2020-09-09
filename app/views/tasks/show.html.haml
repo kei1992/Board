@@ -2,12 +2,13 @@
   .task
     .task_title
       %h2.task_name= @task.name
-      .board_detail.actions
-        .dropdown
-          = image_tag 'actions.svg',class:'dropbtn'
-          .dropdown-content.mini
-            = link_to 'Edit', edit_board_task_path(@board,@task)
-            = link_to 'Delete', board_task_path(@board,@task), data:{method:'delete',confirm:'Are you sure you want to destroy?'}
+      - if user_signed_in? && current_user.has_written_task?(@board,@task)
+        .board_detail.actions
+          .dropdown
+            = image_tag 'actions.svg',class:'dropbtn'
+            .dropdown-content.mini
+              = link_to 'Edit', edit_board_task_path(@board,@task)
+              = link_to 'Delete', board_task_path(@board,@task), data:{method:'delete',confirm:'Are you sure you want to destroy?'}
     - if @task.eyecatch&.attached?
       = image_tag @task.eyecatch, class:'task_eyecatch'
     - else
@@ -16,12 +17,18 @@
       .card_content
         .card_description
           = @task.description
+        .card_deadline
+          %p.card_deadline_text Deadline
+          -if @task.deadline.present?
+            %p= @task.deadline
+          -else
+            %p Unknown
 
   %h2.task_comment Comment
   - @comments.each do |comment|
     .comment
       .comment_image
-        = image_tag current_user.avatar_image
+        = image_tag comment.user.avatar_image
       .comment_description
         = comment.description
 
