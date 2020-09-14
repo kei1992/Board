@@ -32,12 +32,14 @@ $header-padding-y: 16px;
 .dropdown {
   position: relative;
   display: inline-block;
+  cursor:pointer;
 }
 
 .dropdown-content {
   font-weight: normal;
   display: none;
   right: 0;
+  top:20px;
   position: absolute;
   background-color: white;
   min-width: 160px;
