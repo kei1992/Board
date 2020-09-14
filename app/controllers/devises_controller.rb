@@ -1,3 +1,0 @@
-class DevisesController < ApplicationController
-
-end
