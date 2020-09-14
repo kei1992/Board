@@ -1,3 +1,3 @@
-class DevicesController < ApplicationController
+class DevisesController < ApplicationController
 
 end
