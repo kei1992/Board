@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_052703) do
+ActiveRecord::Schema.define(version: 2020_09_25_093655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2020_09_06_052703) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_boards_on_user_id"
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "board_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["board_id"], name: "index_bookmarks_on_board_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -84,7 +93,9 @@ ActiveRecord::Schema.define(version: 2020_09_06_052703) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "name_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name_id"], name: "index_users_on_name_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

@@ -6,8 +6,9 @@ $header-padding-y: 16px;
 .header {
   display: flex;
   justify-content: space-between;
+  align-items:center;
   background-color: #ffffff;
-  padding:8px 16px 16px 16px;
+  padding:16px;
   border-bottom: 1px solid #000000;
   height:58px;
 
@@ -60,4 +61,76 @@ $header-padding-y: 16px;
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.header_bookmark{
+  display:flex;
+  position:relative;
+  color:#f0beba;
+  &:hover{
+    opacity:0.8;
+  }
+
+  &_number{
+    background:#F89174;
+    text-align:center;
+    color:white;
+    font-size: 10px;
+    display:inline-block;
+    width:35px;
+    height:15px;
+    border-radius:8px;
+    position:absolute;
+    top:0px;
+    left:40%;
+  }
+}
+
+.header_bell{
+  display:flex;
+  position:relative;
+  color:#f0beba;
+  &:hover{
+    opacity:0.8;
+  }
+
+  &_number{
+    background:#F89174;
+    text-align:center;
+    color:white;
+    font-size: 10px;
+    display:inline-block;
+    width:35px;
+    height:15px;
+    border-radius:8px;
+    position:absolute;
+    top:0px;
+    left:40%;
+  }
+}
+
+.header_comment{
+  display:flex;
+  position:relative;
+
+  .comment_icon{
+    color:#f0beba;
+    &:hover{
+      opacity:0.8;
+    }
+  }
+
+  &_number{
+    background:#F89174;
+    text-align:center;
+    color:white;
+    font-size: 10px;
+    display:inline-block;
+    width:35px;
+    height:15px;
+    border-radius:8px;
+    position:absolute;
+    top:0px;
+    left:40%;
+  }
 }
