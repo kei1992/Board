@@ -10,10 +10,12 @@
 #  reset_password_token   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name_id                :bigint
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_name_id               (name_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
@@ -25,7 +27,10 @@ class User < ApplicationRecord
   has_many :boards, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :bookmarks,dependent: :destroy
+  has_many :my_bookmarks, through: :bookmarks, source: :board
   has_one :profile, dependent: :destroy
+
 
   def has_written?(board)
     boards.exists?(id: board.id)
@@ -37,6 +42,10 @@ class User < ApplicationRecord
 
   def has_written_comment?(board,task)
     comments.exists?(id: comment.id)
+  end
+
+  def has_bookmarked?(board)
+    bookmarks.exists?(board_id:board.id)
   end
 
   def prepare_profile

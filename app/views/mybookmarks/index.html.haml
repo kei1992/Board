@@ -1,0 +1,31 @@
+.container
+	%h2
+		Bookmark Boards
+	- @boards.each do |board|
+		.card
+			-if user_signed_in?
+				-if current_user.has_bookmarked?(board)
+					.card_bookmark
+						=link_to board_bookmark_path(board),data: {method:'delete'} do
+							%i.fa.fa-2x.fa-bookmark.bookmarkchange
+				-else
+					.card_bookmark
+						=link_to board_bookmark_path(board),data: {method: 'post'} do
+							%i.fa.fa-2x.fa-bookmark.bookmark
+			.card_content
+				.card_name
+					= board.name
+					- if user_signed_in? && current_user.has_written?(board)
+						.board_detail_actions
+							.dropdown
+								= image_tag 'actions.svg', class: 'dropbtn'
+								.dropdown-content.mini
+									= link_to 'Edit', edit_board_path(board)
+									= link_to 'Delete', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '}
+				.card_description
+					= board.description.truncate(300)
+				.card_readmore
+					=link_to board_path(board) do
+						%p Read More >>
+				.card_detail
+					= image_tag board.user.avatar_image
