@@ -9,18 +9,6 @@
   padding:10px;
   position:relative;
 
-  &_bookmark{
-    position:absolute;
-    top:0;
-    left:27px;
-  }
-
-  &_bookmark_active{
-    position:absolute;
-    top:0;
-    left:27px;
-  }
-
   &_name {
     font-size: 22px;
     margin-bottom: 8px;
@@ -96,13 +84,13 @@
 }
 
 
-.bookmark{
-  color:#f0beba;
+.archive{
+  color:#fff3ff;
   &:hover{
     opacity:0.8;
   }
 }
-.bookmarkchange{
+.archivechange{
   color:#EE8D72;
   &:hover{
     opacity:0.8;
