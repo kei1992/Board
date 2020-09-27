@@ -2,12 +2,11 @@
 #
 # Table name: boards
 #
-#  id          :bigint           not null, primary key
-#  description :text
-#  name        :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :bigint
+#  id         :bigint           not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :bigint
 #
 # Indexes
 #
@@ -16,7 +15,9 @@
 class Board < ApplicationRecord
     validates :name, presence: true
     validates :description, presence: true
+
     belongs_to :user
     has_many :tasks, dependent: :destroy
     has_many :bookmarks, dependent: :destroy
+    has_rich_text :description
 end
