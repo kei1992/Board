@@ -9,6 +9,12 @@
   padding:10px;
   position:relative;
 
+  &_archive_mark{
+    position:absolute;
+    top:0;
+    right:0;
+  }
+
   &_name {
     font-size: 22px;
     margin-bottom: 8px;
