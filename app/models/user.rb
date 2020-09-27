@@ -27,6 +27,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :bookmarks,dependent: :destroy
   has_many :my_bookmarks, through: :bookmarks, source: :board
+  has_many :archives, dependent: :destroy
   has_one :profile, dependent: :destroy
 
 
@@ -44,6 +45,10 @@ class User < ApplicationRecord
 
   def has_bookmarked?(board)
     bookmarks.exists?(board_id:board.id)
+  end
+
+  def has_archivetask?(task)
+    archives.exists?(task_id:task.id)
   end
 
   def prepare_profile

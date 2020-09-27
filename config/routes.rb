@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :boards do
     resource :bookmark,only:[:show,:create, :destroy]
     resources :tasks do
+      resource :archive,only:[:create, :destroy]
       resources :comments, only:[:index,:new ,:create, :update, :destroy]
     end
   end

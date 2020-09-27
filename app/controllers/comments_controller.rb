@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
     def index
         task = Task.find(params[:task_id])
         comments = task.comments
+        render json:comments
     end
 
     def new

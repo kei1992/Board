@@ -4,14 +4,14 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+// require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
 import $ from 'jquery'
 import axios from 'axios'
 
-document.addEventListener('turbolinks:load',()=>{
+document.addEventListener('DOMContentLoaded',()=>{
 	const dataset = $(`#board-show`).data()
 	const boardId = dataset.boardId
 	axios.get(`/boards/${boardId}/bookmark`)

@@ -1,9 +1,17 @@
 .container
-  %i.fa.fa-angle-double-left
-  =link_to 'Back',:back
+  =link_to '<< Back',:back
   .task
     .task_title
       %h2.task_name= @task.name
+      -if user_signed_in?
+        -if current_user.has_archivetask?(@task)
+          .card_archivetask
+            =link_to board_task_archive_path(@board,@task),data: {method:'delete'} do
+              %i.fa.fa-3x.fa-bookmark.bookmarkchange
+        -else
+          .card_archivetask
+            =link_to board_task_archive_path(@board,@task),data: {method: 'post'} do
+              %i.fa.fa-3x.fa-bookmark.bookmark
       - if user_signed_in? && current_user.has_written_task?(@board,@task)
         .board_detail.actions
           .dropdown
@@ -15,6 +23,7 @@
       = image_tag @task.eyecatch, class:'task_eyecatch'
     - else
       = image_tag 'background-default.png',class:'task_eyecatch'
+
     .card
       .card_content
         .card_description
@@ -28,15 +37,13 @@
 
   %h2.task_comment Comment
   .commnet-container
-  -# - @comments.each do |comment|
-  -#   .comment
-  -#     .comment_image
-  -#       = image_tag comment.user.avatar_image
-  -#     .comment_description
-  -#       = comment.description
+  - @comments.each do |comment|
+    .comment
+      .comment_image
+        = image_tag comment.user.avatar_image
+      .comment_description
+        = comment.description
 
-
-  -# コメント投稿ボタン
   .new_board
     = link_to new_board_task_comment_path(@board.id,@task.id),class:'board_button' do
       .float_btn
