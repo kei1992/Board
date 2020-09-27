@@ -26,9 +26,9 @@
     -#     %p.header_comment_number 10
 
     - if user_signed_in?
-      .dropdown
+      .dropdown-header
         = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
-        .dropdown-content
+        .dropdown-content-header
           = link_to 'Add new board',new_board_path
           - if current_user.profile.present?
             = link_to 'Profile',profile_path

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :boards do
     resource :bookmark,only:[:show,:create, :destroy]
     resources :tasks do
-      resources :comments, only:[:new ,:create, :update, :destroy]
+      resources :comments, only:[:index,:new ,:create, :update, :destroy]
     end
   end
   resource :profile, only:[:show, :edit, :update]

@@ -2,7 +2,7 @@ class BoardsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @boards = Board.all
+        @boards = Board.all.page(params[:page]).per(4)
     end
 
     def show

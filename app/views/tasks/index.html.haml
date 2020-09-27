@@ -1,0 +1,24 @@
+.container
+	=link_to '<< Back',boards_path
+	-@tasks.each do |task|
+		.card
+			=link_to board_task_path(@board,task) do
+				- if task.eyecatch&.attached?
+					= image_tag task.eyecatch, class:'task_eyecatch'
+				- else
+					= image_tag 'background-default.png',class:'task_eyecatch'
+			.card_name
+				= task.name
+			.card_description
+				= task.description
+			.card_detail
+				= image_tag task.user.avatar_image
+				.card_btn
+					%p= task.comment_count
+					%i.fa.fa-comments.fa-2x.fa-fw
+	.new_board
+		= link_to new_board_task_path(@board), class:'board_button' do
+			.float_btn
+				%i.fa.fa-plus
+			%p Add new card
+	=paginate @tasks
