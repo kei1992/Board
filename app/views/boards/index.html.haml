@@ -2,15 +2,6 @@
   %h2 All Board
   - @boards.each do |board|
     .card
-      -if user_signed_in?
-        -if current_user.has_bookmarked?(board)
-          .card_bookmark
-            =link_to board_bookmark_path(board),data: {method:'delete'} do
-              %i.fa.fa-2x.fa-bookmark.bookmarkchange
-        -else
-          .card_bookmark
-            =link_to board_bookmark_path(board),data: {method: 'post'} do
-              %i.fa.fa-2x.fa-bookmark.bookmark
       .card_content
         .card_name
           = board.name
