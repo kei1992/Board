@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'boards#index'
   resources :boards do
-    resource :bookmark,only:[:create, :destroy]
+    resource :bookmark,only:[:show,:create, :destroy]
     resources :tasks do
       resources :comments, only:[:new ,:create, :update, :destroy]
     end

@@ -1,4 +1,6 @@
 .container
+  %i.fa.fa-angle-double-left
+  =link_to 'Back',:back
   .task
     .task_title
       %h2.task_name= @task.name
@@ -12,7 +14,7 @@
     - if @task.eyecatch&.attached?
       = image_tag @task.eyecatch, class:'task_eyecatch'
     - else
-      = image_tag 'task_sample.png',class:'task_eyecatch'
+      = image_tag 'background-default.png',class:'task_eyecatch'
     .card
       .card_content
         .card_description

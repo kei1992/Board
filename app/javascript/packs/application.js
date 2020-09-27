@@ -8,6 +8,23 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+import $ from 'jquery'
+import axios from 'axios'
+
+document.addEventListener('turbolinks:load',()=>{
+	const dataset = $(`#board-show`).data()
+	const boardId = dataset.boardId
+	axios.get(`/boards/${boardId}/bookmark`)
+		.then((response) => {
+			const hasBookmarked = response.data.hasBookmarked
+			if (hasBookmarked){
+				$('.active-bookmark').removeClass('hidden')
+			}else{
+				$('.inactive-bookmark').removeClass('hidden')
+			}
+		})
+})
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
