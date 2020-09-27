@@ -54,7 +54,7 @@ class User < ApplicationRecord
     if profile&.avatar&.attached?
       profile.avatar
     else
-      'default-avatar.png'
+      'default-avatar1.png'
     end
   end
 end
