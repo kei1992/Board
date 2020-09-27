@@ -3,15 +3,16 @@
   .task
     .task_title
       %h2.task_name= @task.name
+
       -if user_signed_in?
         -if current_user.has_archivetask?(@task)
-          .card_archivetask
+          .task_archive_mark
             =link_to board_task_archive_path(@board,@task),data: {method:'delete'} do
-              %i.fa.fa-3x.fa-bookmark.bookmarkchange
+              %i.fa.fa-3x.fa-bookmark.archivechange
         -else
-          .card_archivetask
+          .task_archive_mark
             =link_to board_task_archive_path(@board,@task),data: {method: 'post'} do
-              %i.fa.fa-3x.fa-bookmark.bookmark
+              %i.fa.fa-3x.fa-bookmark.archive
       - if user_signed_in? && current_user.has_written_task?(@board,@task)
         .board_detail.actions
           .dropdown
@@ -23,7 +24,6 @@
       = image_tag @task.eyecatch, class:'task_eyecatch'
     - else
       = image_tag 'background-default.png',class:'task_eyecatch'
-
     .card
       .card_content
         .card_description
