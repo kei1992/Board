@@ -27,12 +27,13 @@
             %p Unknown
 
   %h2.task_comment Comment
-  - @comments.each do |comment|
-    .comment
-      .comment_image
-        = image_tag comment.user.avatar_image
-      .comment_description
-        = comment.description
+  .commnet-container
+  -# - @comments.each do |comment|
+  -#   .comment
+  -#     .comment_image
+  -#       = image_tag comment.user.avatar_image
+  -#     .comment_description
+  -#       = comment.description
 
 
   -# コメント投稿ボタン

@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+    def index
+        task = Task.find(params[:task_id])
+        comments = task.comments
+    end
+
     def new
         task = Task.find(params[:task_id])
         @comment = task.comments.build()

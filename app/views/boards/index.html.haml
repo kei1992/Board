@@ -15,7 +15,7 @@
         .card_description
           = board.description
         .card_readmore
-          =link_to board_path(board) do
+          =link_to board_tasks_path(board) do
             %p Read More >>
         .card_detail
           = image_tag board.user.avatar_image
@@ -25,3 +25,4 @@
       .float_btn
         %i.fa.fa-plus
       %p Add new board
+  =paginate @boards
