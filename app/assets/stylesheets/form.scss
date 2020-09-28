@@ -1,4 +1,4 @@
-
+@import 'variables';
 input, select {
     &.text {
       width: 100%;
@@ -30,4 +30,28 @@ input, select {
 
   .welcome-image,.welcome-image2{
     width:100%;
+  }
+
+  .sign_up_btn,.sign_in_btn,.forgot_password_btn,.google_login_btn{
+    background-color: $primary-color;
+    margin-bottom:30px;
+    border: none;
+    border-radius:5px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 16px 0;
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    display:inline-block;
+
+    &:hover{
+      opacity:0.8;
+    }
+  }
+
+  .form_title,.form_description{
+    margin-bottom:10px;
   }
