@@ -1,6 +1,7 @@
 .container
   =image_tag 'welcome-image2.png',class:'welcome-image2'
-  %h2 Sign in
+  %h2.form_title Sign in
+  %p.form_description If you would like to sign in with your email address, please fill in the forms below.
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
       = f.label :email
@@ -12,4 +13,5 @@
       = f.password_field :password, autocomplete: "current-password", class: 'text'
     .actions
       = f.submit "Submit", class: 'btn-primary'
+  %h2 Other Options
   = render "devise/shared/links"
