@@ -359,6 +359,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.2)
+  omniauth
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
