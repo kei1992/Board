@@ -24,8 +24,8 @@ class User < ApplicationRecord
 
   has_many :sns_credentials, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[google_oauth2]
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         omniauth_providers: [:google_oauth2]
 
   has_many :boards, dependent: :destroy
   has_many :tasks, dependent: :destroy
@@ -67,49 +67,18 @@ class User < ApplicationRecord
     end
   end
 
-  def self.without_sns_data(auth)
-    user = User.where(email: auth.info.email).first
+  protected
+    def self.from_omniauth(access_token)
+      data = access_token.info
+      user = User.where(email: data['email']).first
 
-      if user.present?
-        sns = SnsCredential.create(
-          uid: auth.uid,
-          provider: auth.provider,
-          user_id: user.id
-        )
-      else
-        user = User.new(
-          email: auth.info.email,
-        )
-        sns = SnsCredential.new(
-          uid: auth.uid,
-          provider: auth.provider
-        )
-      end
-      return { user: user ,sns: sns}
+      # Uncomment the section below if you want users to be created if they don't exist
+      # unless user
+      #     user = User.create(name: data['name'],
+      #         email: data['email'],
+      #         password: Devise.friendly_token[0,20]
+      #     )
+      # end
+      # user
     end
-
-
-   def self.with_sns_data(auth, snscredential)
-    user = User.where(id: snscredential.user_id).first
-    unless user.present?
-      user = User.new(
-        email: auth.info.email,
-      )
-    end
-    return {user: user}
-   end
-
-   def self.find_oauth(auth)
-    uid = auth.uid
-    provider = auth.provider
-    snscredential = SnsCredential.where(uid: uid, provider: provider).first
-    if snscredential.present?
-      user = with_sns_data(auth, snscredential)[:user]
-      sns = snscredential
-    else
-      user = without_sns_data(auth)[:user]
-      sns = without_sns_data(auth)[:sns]
-    end
-    return { user: user ,sns: sns}
-  end
 end
