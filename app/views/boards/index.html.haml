@@ -21,9 +21,17 @@
           = image_tag board.user.avatar_image
 
   .new_board
-    = link_to new_board_path, class:'board_button' do
-      .float_btn
-        %i.fa.fa-plus
+    .btn-primary.show-board-form
+      %i.fa.fa-plus
+      %p Add new board
+    .add_new_board_name.hidden
+      %p Name
+      = text_area_tag :board_name, '',class:'ssm'
+    .add_new_board_description.hidden
+      %p Description
+      =text_area_tag :board_description, '', class:'sm'
+    .btn-primary.post-new-board.hidden
+      %i.fa.fa-plus
       %p Add new board
   =paginate @boards
 

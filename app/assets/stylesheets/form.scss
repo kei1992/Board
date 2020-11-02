@@ -26,6 +26,9 @@ input, select {
     border: 1px solid #EBEBEB;
     background: #F4F4F4;
     border-radius: 10px;
+    &.ssm{
+      min-height:20px;
+    }
     &.sm{
       min-height:160px;
     }

@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
     before_action :authenticate_user!
+    skip_before_action :verify_authenticity_token
 
     def index
         @boards = Board.all.page(params[:page]).per(4)
