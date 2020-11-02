@@ -11,8 +11,8 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
   %header.header
-    %p.header_pageTitle
-      = link_to 'Boards' ,root_path
+    %p.header_pageTitle.my-0
+      = link_to 'Boards' ,root_path,class:'text-decoration-none'
 
     - if user_signed_in?
       .dropdown-header

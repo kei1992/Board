@@ -4,6 +4,7 @@ class BoardsController < ApplicationController
 
     def index
         @boards = Board.all.page(params[:page]).per(4)
+
     end
 
     def new
