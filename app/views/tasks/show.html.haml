@@ -1,6 +1,6 @@
 .container
   =link_to '<< Back',:back
-  .task
+  .task#task-show{data:{board_id: @board.id, task_id: @task.id}}
     .task_title
       %h2.task_name= @task.name
 
@@ -36,16 +36,16 @@
             %p Unknown
 
   %h2.task_comment Comment
-  .commnet-container
-  - @comments.each do |comment|
-    .comment
-      .comment_image
-        = image_tag comment.user.avatar_image
-      .comment_description
-        = comment.description
+  .comment-container
 
   .new_board
-    = link_to new_board_task_comment_path(@board.id,@task.id),class:'board_button' do
-      .float_btn
-        %i.fa.fa-plus
+    .btn-primary.show-comment-form
+      %i.fa.fa-plus
       %p Add new comment
+    .comment-text-area.hidden
+      =text_area_tag :comment_content, '', class:'sm'
+    .btn-primary.add-comment-button.hidden
+      %i.fa.fa-plus
+      %p Add new comment
+
+=javascript_pack_tag 'task'
