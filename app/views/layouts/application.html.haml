@@ -13,17 +13,6 @@
   %header.header
     %p.header_pageTitle
       = link_to 'Boards' ,root_path
-    -# - if user_signed_in?
-    -#   = link_to mybookmarks_path do
-    -#     .header_bookmark
-    -#       %i.fa.fa-2x.fa-bookmark.bookmark
-    -#       %div.header_bookmark_number 5
-    -#   .header_bell
-    -#     %i.fa.fa-2x.fa-bell.bell_icon
-    -#     %div.header_bell_number 30
-    -#   .header_comment
-    -#     %i.fa.fa-2x.fa-comments.comment_icon
-    -#     %p.header_comment_number 10
 
     - if user_signed_in?
       .dropdown-header

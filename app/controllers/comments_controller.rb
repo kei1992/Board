@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
+    skip_before_action :verify_authenticity_token
+
     def index
+        board = Board.find(params[:board_id])
         task = Task.find(params[:task_id])
         comments = task.comments
         render json:comments
@@ -15,12 +18,8 @@ class CommentsController < ApplicationController
         task = Task.find(params[:task_id])
         @comment = task.comments.build(comments_params)
 
-        if @comment.save
-            redirect_to board_task_path(board,task), notice:'Saved comment'
-        else
-            flash.now[:error] = 'Failed to save'
-            render :new
-        end
+        @comment.save!
+        render json: @comment
     end
 
     private

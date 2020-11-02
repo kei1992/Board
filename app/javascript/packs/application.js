@@ -8,22 +8,7 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
-import $ from 'jquery'
-import axios from 'axios'
-
-document.addEventListener('DOMContentLoaded',()=>{
-	const dataset = $(`#board-show`).data()
-	const boardId = dataset.boardId
-	axios.get(`/boards/${boardId}/bookmark`)
-		.then((response) => {
-			const hasBookmarked = response.data.hasBookmarked
-			if (hasBookmarked){
-				$('.active-bookmark').removeClass('hidden')
-			}else{
-				$('.inactive-bookmark').removeClass('hidden')
-			}
-		})
-})
+const { default: Axios } = require("axios")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
