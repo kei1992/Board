@@ -8,6 +8,13 @@ $('.show-board-form').on('click', () => {
 	$('.post-new-board').removeClass('hidden')
 })
 
+$('.close-board-form').on('click', () => {
+	$('.show-board-form').removeClass('hidden')
+	$('.add_new_board_name').addClass('hidden')
+	$('.add_new_board_description').addClass('hidden')
+	$('.post-new-board').addClass('hidden')
+})
+
 $('.post-new-board').on('click', () => {
 	const boardName = $('#board_name').val()
 	const boardDescription = $('#board_description').val()
