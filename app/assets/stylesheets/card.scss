@@ -6,7 +6,7 @@
   border:1px solid #F4F4F4;
   border-radius:10px;
   margin: 16px 0;
-  padding:10px;
+  padding:16px;
   position:relative;
 
   &_archive_mark{
@@ -101,4 +101,8 @@
   &:hover{
     opacity:0.8;
   }
+}
+
+.card_row .col-md-5{
+  margin:10px 15px 10px 15px;
 }
