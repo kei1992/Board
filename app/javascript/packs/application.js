@@ -23,3 +23,33 @@ const { default: Axios } = require("axios")
 
 require("trix")
 require("@rails/actiontext")
+
+import $ from 'jquery'
+import axios from 'axios'
+
+// モーダル操作
+$(document).on('click', '.modal-btn', () => {
+	$('.modal-background').fadeIn(100)
+	$('.modal').fadeIn(100)
+	$('.hidden_btn').fadeIn(100)
+})
+
+$(document).on('click', '.hidden_btn', () => {
+	$('.hidden_btn').fadeOut(100)
+	$('.modal-background').fadeOut(100)
+	$('.modal').fadeOut(100)
+	$('html,body').animate({ scrollTop: 0 }, 'slow');
+})
+
+
+// 新記事投稿
+$(document).on('click', '.modal-note', () => {
+	$('.modal-background').fadeOut(100)
+	$('.modal').fadeOut(100)
+	$('.hidden_btn').fadeOut(100)
+	$('.container-board').fadeOut(10)
+	$('.new_board').removeClass('hidden')
+	$('.add_new_board_name').removeClass('hidden')
+	$('.add_new_board_description').removeClass('hidden')
+	$('.post-new-board').removeClass('hidden')
+})

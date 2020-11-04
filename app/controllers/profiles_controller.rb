@@ -6,16 +6,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    # if current_user.profile.present?
-    #   @profile = current_user.profile
-    # else
-    #   @profile = current_user.build_profile
-    # end
-
-    # ボッチ演算子
-    # @profile = current_user.profile || current_user.build_profile
-
-    #最終形態
     @profile = current_user.prepare_profile
   end
 

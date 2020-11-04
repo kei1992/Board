@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        @boards = Board.all.page(params[:page]).per(4)
+        @boards = Board.all.page(params[:page]).per(8)
 
     end
 

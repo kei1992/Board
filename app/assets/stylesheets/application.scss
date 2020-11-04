@@ -32,7 +32,7 @@ html {
 
 body {
   height: 100%;
-  background-color: $base-bg-color;
+  background-color: #F4F8FA;
   font-size: 1em;
   color: $text-base-color;
 }
@@ -79,4 +79,54 @@ nav{
   margin:16px 0 16px 0;
   text-align:center;
   height:30px;
+}
+
+.modal-background{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(244,244,244);
+  z-index: 100;
+  text-align: center;
+  display: none;
+  width:100%;
+}
+
+.modal{
+  position: relative;
+  background-color:rgb(244,244,244);
+  border-radius: 4px;
+  width: 100%;
+
+}
+
+.modal-children-background{
+  background-color: white;
+  height:150px;
+  width:150px;
+  margin-bottom:30px;
+  border-radius: 20px;
+  position:relative;
+
+}
+
+.modal-siblings{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform : translate(-50%,-50%);
+}
+
+.modal-text{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.hidden_btn{
+  position:absolute;
+  top:5px;
+  right:5px;
+  z-index:50;
 }
