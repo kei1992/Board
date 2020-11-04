@@ -13,7 +13,9 @@ const handleCommentForm = () => {
 
 const appendNewComment = (comment) => {
 	$('.comment-container').append(
-		`<div class="task_comment"><p>${comment.description}</p></div>`
+		`<div class="task_comment">
+			<p>${comment.description}</p>
+		</div>`
 	)
 }
 
