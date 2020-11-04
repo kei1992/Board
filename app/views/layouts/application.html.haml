@@ -17,14 +17,28 @@
     - if user_signed_in?
       .dropdown-header
         = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
-        .dropdown-content-header
-          = link_to 'Add new board',new_board_path
-          - if current_user.profile.present?
-            = link_to 'Profile',profile_path
-          -else
-            = link_to 'Edit Profile',edit_profile_path
-          = link_to 'Sign Out', destroy_user_session_path, data: { method: 'delete' }
+        %button.btn.btn-info.modal-btn.ml-3 Open
+        .modal-background
+          .modal.container
+            .row
+              =image_tag 'hiddenbtn',class:'hidden hidden_btn'
+            .row.mx-auto.mt-5.modal-row
+              .col-12.col-md-3.modal-children-note.modal-children-background.mx-auto
+                .modal-siblings.modal-note
+                  =image_tag 'note.png'
+                  %p.modal-text Create Board
 
+              .col-12.col-md-3.modal-children-people.modal-children-background.mx-auto
+                =link_to edit_profile_path do
+                  .modal-siblings
+                    =image_tag 'people.png'
+                    %p.modal-text Edit Profile
+
+              .col-12.col-md-3.modal-children-logout.modal-children-background.mx-auto
+                =link_to destroy_user_session_path, data: { method: 'delete' } do
+                  .modal-siblings
+                    =image_tag 'logout.png'
+                    %p.modal-text Logout
 
   - if flash.present?
     .flash

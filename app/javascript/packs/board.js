@@ -30,3 +30,4 @@ $('.post-new-board').on('click', () => {
 			})
 	}
 })
+
