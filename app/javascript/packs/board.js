@@ -15,10 +15,11 @@ $('.close-board-form').on('click', () => {
 	$('.post-new-board').addClass('hidden')
 })
 
+
+
 $('.post-new-board').on('click', () => {
 	const boardName = $('#board_name').val()
 	const boardDescription = $('#board_description').val()
-
 	if (!boardDescription || !boardName) {
 		window.alert('Please fill in the form.')
 	} else {
@@ -28,6 +29,6 @@ $('.post-new-board').on('click', () => {
 				$('#board_name').val('')
 				$('#board_description').val('')
 			})
+		
 	}
 })
-

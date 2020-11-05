@@ -1,5 +1,6 @@
 .container
-  =link_to '<< Back',:back
+  =render 'commons/createboard'
+  =link_to '<< Back',:back,class:'btn btn-info'
   .task#task-show{data:{board_id: @board.id, task_id: @task.id}}
     .task_title
       %h2.task_name= @task.name
@@ -16,15 +17,15 @@
     - else
       = image_tag 'background-default.png',class:'task_eyecatch'
     .card
-      -if user_signed_in?
-        -if current_user.has_archivetask?(@task)
-          .card_archive_mark
-            =link_to board_task_archive_path(@board,@task),data: {method:'delete'} do
-              %i.fa.fa-3x.fa-bookmark.archivechange
-        -else
-          .card_archive_mark
-            =link_to board_task_archive_path(@board,@task),data: {method: 'post'} do
-              %i.fa.fa-3x.fa-bookmark.archive
+      -# -if user_signed_in?
+      -#   -if current_user.has_archivetask?(@task)
+      -#     .card_archive_mark
+      -#       =link_to board_task_archive_path(@board,@task),data: {method:'delete'} do
+      -#         %i.fa.fa-3x.fa-bookmark.archivechange
+      -#   -else
+      -#     .card_archive_mark
+      -#       =link_to board_task_archive_path(@board,@task),data: {method: 'post'} do
+      -#         %i.fa.fa-3x.fa-bookmark.archive
       .card_content
         .card_description
           = @task.description

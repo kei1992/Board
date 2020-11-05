@@ -11,6 +11,7 @@
 @import 'profile';
 @import 'actiontext';
 @import 'trix/dist/trix.css';
+@import 'footer';
 
 
 html {
@@ -131,19 +132,15 @@ nav{
   z-index:50;
 }
 
-/*ページネーション自体のデザイン*/
 .pagination>li>a {
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
+  border: none;
+  color: #696969;
 }
 
-/* 表示しているページ番号のデザイン */
-.pagination>.active>a {
-  background: #18A2B8;     /*背景の色を変える*/
-  border-radius: 15px;     /*角を丸くする*/
-}
-
-/*ホバー時のデザイン*/
 .pagination>li>a:hover {
-  border-radius: 15px;    /*角を丸くする*/
+  border-radius: 15px;
+}
+
+.page-item.active .page-link {
+  background: #18A2B8;
 }

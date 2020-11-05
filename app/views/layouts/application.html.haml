@@ -10,12 +10,18 @@
     %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
-  %header.header
-    %p.header_pageTitle.my-0
-      = link_to 'Boards' ,root_path,class:'text-decoration-none'
+  %header.header.fixed-top
+    .header_pageTitle
+      = link_to root_path ,class:' d-flex align-items-center text-decoration-none' do
+        =image_tag 'logodesign.png',class:'ml-auto'
+        %h2.mb-0.text-info.ml-3 Boards
+    -unless user_signed_in?
+      .header_pagelogin
+        = link_to new_user_session_path do
+          .btn.btn-info Login
 
     - if user_signed_in?
-      .dropdown-header
+      .dropdown-header.pr-0
         = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
         %button.btn.btn-info.modal-btn.ml-3 Add New
         .modal-background
@@ -39,6 +45,7 @@
                   .modal-siblings
                     =image_tag 'logout.png'
                     %p.modal-text Logout
+
 
   - if flash.present?
     .flash
