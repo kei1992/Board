@@ -1,19 +1,14 @@
 - if controller_name != 'sessions'
   %p.form_description If you have already have your account, please press the button below.
-  = link_to "Sign in", new_session_path(resource_name),class:"sign_in_btn"
+  = link_to "Sign in", new_session_path(resource_name),class:"btn btn-first"
   %br/
--# - if devise_mapping.omniauthable?
--#   %p.form_description if you have google account, please press the button below.
--#   - resource_class.omniauth_providers.each do |provider|
--#     = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),class:"google_login_btn"
--#   %br/
 - if devise_mapping.registerable? && controller_name != 'registrations'
   %p.form_description If you don't have your acocunt, please press the button below.
-  = link_to "Sign up", new_registration_path(resource_name),class:"sign_up_btn"
+  = link_to "Sign up", new_registration_path(resource_name),class:"btn btn-first"
   %br/
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
   %p.form_description If you have fogot your password, please press the button below.
-  = link_to "Forgot your password?", new_password_path(resource_name),class:"forgot_password_btn"
+  = link_to "Forgot your password?", new_password_path(resource_name),class:"btn forgot_password_btn"
   %br/
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
   = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)

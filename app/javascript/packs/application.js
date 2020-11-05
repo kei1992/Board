@@ -25,10 +25,9 @@ require("trix")
 require("@rails/actiontext")
 
 import $ from 'jquery'
-import axios from 'axios'
 
 // モーダル操作
-$(document).on('click', '.modal-btn', () => {
+const modalOpen = $(document).on('click', '.modal-btn', () => {
 	$('.modal-background').fadeIn(100)
 	$('.modal').fadeIn(100)
 	$('.hidden_btn').fadeIn(100)
@@ -41,6 +40,14 @@ $(document).on('click', '.hidden_btn', () => {
 	$('html,body').animate({ scrollTop: 0 }, 'slow');
 })
 
+
+$(document).on('click', '.uparrow', () => {
+	$('.new_board').fadeOut(100)
+	$('.container-board').fadeIn()
+	$('.modal-note').on('click', () => {
+		$('.new_board').css('display', 'block')
+	})
+})
 
 // 新記事投稿
 $(document).on('click', '.modal-note', () => {

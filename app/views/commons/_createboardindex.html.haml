@@ -1,0 +1,21 @@
+.container
+	.new_board.mt-3
+		.btn.btn-first.show-board-form
+			%i.fa.fa-plus
+			%p Add new board
+		.add_new_board_name.hidden.mx-auto
+			.row
+				.col
+					%p Name
+				.col.pr-0.text-right
+					.btn.btn-info.close-board-form Close Form
+			.row
+				= text_area_tag :board_name, '',class:'ssm'
+		.add_new_board_description.hidden
+			.row
+				%p Description
+				=text_area_tag :board_description, '', class:'sm'
+			.row
+				.btn.btn-info.btn-first.post-new-board.hidden
+					%i.fa.fa-plus
+					%p Add new board

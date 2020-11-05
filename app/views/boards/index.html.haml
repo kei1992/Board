@@ -1,20 +1,7 @@
 .container
-  .new_board.hidden.mt-3
-    .add_new_board_name.hidden
-      .row
-        %p Name
-      .row
-        = text_area_tag :board_name, '',class:'ssm'
-    .add_new_board_description.hidden
-      .row
-        %p Description
-        =text_area_tag :board_description, '', class:'sm'
-      .row
-        .btn.btn-first.post-new-board.hidden
-          %i.fa.fa-plus
-          %p Add new board
+  =render 'commons/createboard'
   .container-board
-    %h2 All Board
+    %h2.text-info All Board
     .row.mx-auto.card_row
       - @boards.each do |board|
         .card.col-12.col-md-5.mx-auto
@@ -28,33 +15,15 @@
                 %p Read More >>
             .card_detail
               = image_tag board.user.avatar_image
-            .card_detail_name
-              %p= board.user.email
+            .card_detail_name.d-flex
+              %p User ID：
+              %p= board.user.id
             - if user_signed_in? && current_user.has_written?(board)
               .board_detail_actions
                 = link_to 'Edit', edit_board_path(board),class:'btn btn-info'
                 = link_to 'Delete', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '},class:'btn btn-danger'
 
-    .new_board.mt-3
-      .btn.btn-first.show-board-form
-        %i.fa.fa-plus
-        %p Add new board
-      .add_new_board_name.hidden
-        .row
-          .col
-            %p Name
-          .col.pr-0.text-right
-            .btn.btn-info.close-board-form Close Form
-        .row
-          = text_area_tag :board_name, '',class:'ssm'
-      .add_new_board_description.hidden
-        .row
-          %p Description
-          =text_area_tag :board_description, '', class:'sm'
-        .row
-          .btn.btn-info.btn-first.post-new-board.hidden
-            %i.fa.fa-plus
-            %p Add new board
+    -# =render 'commons/createboardindex'
     =paginate @boards
-
-  =javascript_pack_tag 'board'
+    =javascript_pack_tag 'board'
+    =render 'commons/footer'

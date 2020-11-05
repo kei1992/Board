@@ -1,0 +1,15 @@
+.new_board.hidden.mt-3
+	.container.add_new_board_name.hidden
+		.row
+			%p Name
+			=image_tag 'uparrow.png',class:'uparrow ml-auto'
+		.row
+			= text_area_tag :board_name, '',class:'ssm'
+	.container.add_new_board_description.hidden
+		.row
+			%p Description
+			=text_area_tag :board_description, '', class:'sm'
+		.row
+			.btn.btn-first.post-new-board.hidden
+				%i.fa.fa-plus
+				%p Add new board
