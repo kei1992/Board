@@ -1,5 +1,5 @@
-.container
-  %h2 Log in
+.container.mt-5
+  %h2.mt-3 Log in
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
       = f.label :email
@@ -10,8 +10,7 @@
       %br/
       = f.password_field :password, autocomplete: "current-password",class:"text"
     .actions
-      = f.submit "Log in with Email",class:"text",class:"btn-primary" do
-        %i.fa.fa-envelope
+      = f.submit "Log in with Email",class:"text",class:"btn btn-first"
       %p.form_explanation If you want to log in with your SNS account, you can choose the buttons below.
       = link_to user_facebook_omniauth_authorize_path,class:"sign_in_facebook_btn" do
         %i.fa.fa-facebook-square.company_mark
