@@ -20,10 +20,14 @@ const appendNewComment = (comment) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	const dataset_board = $(`#task-show`).data()
-	const boardId = dataset_board.boardId
 	const dataset_task = $(`#task-show`).data()
+	const boardId = dataset_task.boardId
 	const taskId = dataset_task.taskId
+
+	axios.get(`/boards/${boardId}/tasks/${taskId}/archive`)
+		.then((response)=>{
+			console.log(response)
+	})
 
 	axios.get(`/boards/${boardId}/tasks/${taskId}/comments`)
 		.then((response) => {
@@ -44,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		} else {
 			axios.post(`/boards/${boardId}/tasks/${taskId}/comments`, { comment: { description: content } })
 				.then((res) => {
+					debugger
 					const comment = res.data
 					appendNewComment(comment)
 					$('#comment_content').val('')

@@ -51,8 +51,8 @@ class User < ApplicationRecord
     bookmarks.exists?(board_id:board.id)
   end
 
-  def has_archivetask?(task)
-    archives.exists?(task_id:task.id)
+  def has_archivetasked?(board,task)
+    archives.exists?(board_id:board.id,task_id:task.id)
   end
 
   def prepare_profile
