@@ -18,14 +18,17 @@ $('.close-board-form').on('click', () => {
 $('.post-new-board').on('click', () => {
 	const boardName = $('#board_name').val()
 	const boardDescription = $('#board_description').val()
+	const tagList = $('#tag_list').val()
+	debugger
 	if (!boardDescription || !boardName) {
 		window.alert('Please fill in the form.')
 	} else {
-		axios.post(`/boards`, { board: { name: boardName, description: boardDescription } })
+		axios.post(`/boards`, { board: { name: boardName, description: boardDescription, tag_list: tagList } })
 			.then((response) => {
 				window.alert('Successfully posted')
 				$('#board_name').val('')
 				$('#board_description').val('')
+				$('#tag_list').val('')
 			})
 	}
 })

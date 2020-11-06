@@ -11,4 +11,8 @@
       = f.label :description, 'Description'
     %div
       = f.rich_text_area :description
+    %div
+      = f.label :tag_list
+    %div
+      = f.text_field :tag_list, value: @board.tag_list.join(','), class: "form-control"
     = f.submit 'Submit', class: 'btn-first'

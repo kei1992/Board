@@ -1,5 +1,7 @@
 .container
   =render 'commons/createboard'
+  =render 'commons/tag_list_all'
+  %binding.pry
   .container-board
     %h2.text-info All Board
     .row.mx-auto.card_row
@@ -13,6 +15,8 @@
             .card_readmore
               =link_to board_tasks_path(board) do
                 %p Read More >>
+            .card_taglist
+              =render 'commons/tag_list',tag_list: board.tag_list
             .card_detail
               = image_tag board.user.avatar_image
             - if user_signed_in? && current_user.has_written?(board)
@@ -20,7 +24,6 @@
                 = link_to 'Edit', edit_board_path(board),class:'btn btn-info'
                 = link_to 'Delete', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '},class:'btn btn-danger'
 
-    -# =render 'commons/createboardindex'
     =paginate @boards
     =javascript_pack_tag 'board'
     =render 'commons/footer'

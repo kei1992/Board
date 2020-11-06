@@ -4,6 +4,9 @@ class BoardsController < ApplicationController
 
     def index
         @boards = Board.all.page(params[:page]).per(12)
+        if params[:tag_name]
+            @boards = Board.tagged_with("#{params[:tag_name]}").page(params[:page]).per(12)
+        end
     end
 
     def new
@@ -43,6 +46,6 @@ class BoardsController < ApplicationController
 
     private
     def board_params
-        params.require(:board).permit(:name, :description)
+        params.require(:board).permit(:name, :description, :tag_list)
     end
 end
