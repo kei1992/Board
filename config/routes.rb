@@ -10,6 +10,11 @@ Rails.application.routes.draw do
       resources :comments, only:[:index,:new ,:create, :update, :destroy]
     end
   end
+
+  resources :accounts, only: [:show] do
+    resources :follows, only: [:create]
+    resources :unfollows, only: [:create]
+  end
   resource :profile, only:[:show, :edit, :update]
   resources :mybookmarks, only:[:index]
 end

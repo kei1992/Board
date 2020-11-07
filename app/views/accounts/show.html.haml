@@ -1,0 +1,23 @@
+.container.mt-5
+	%h2.mt-3.text-info User info
+	.profile.mt-3
+		.profile_info
+		= image_tag @user.avatar_image,class:'header_avatar'
+		- if @user == current_user
+			= link_to 'Edit Profile',edit_profile_path, class:'btn btn-first'
+		-else
+			-if current_user.has_followed?(@user)
+				= link_to 'Unfollow',account_unfollows_path(@user),data:{method: 'post'},class:'ml-3 btn btn-info'
+			-else
+				= link_to 'Follow',account_follows_path(@user),data:{method: 'post'},class:'ml-3 btn btn-info'
+	.container-board
+		.row.mx-auto.card_row
+			- @user.boards.each do |board|
+				.card.col-12.mx-auto
+					.card_content
+						.card_name
+							= board.name
+						.card_description
+							= board.description
+						.card_taglist
+							=render 'commons/tag_list',tag_list: board.tag_list
