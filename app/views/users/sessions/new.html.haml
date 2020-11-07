@@ -10,7 +10,7 @@
       %br/
       = f.password_field :password, autocomplete: "current-password",class:"text"
     .actions
-      = f.submit "Log in with Email",class:"text",class:"btn-primary" do
+      = f.submit "Log in with Email",class:"text",class:"btn btn-first" do
         %i.fa.fa-envelope
       %p.form_explanation If you want to log in with your SNS account, you can choose the buttons below.
       = link_to user_facebook_omniauth_authorize_path,class:"sign_in_facebook_btn" do

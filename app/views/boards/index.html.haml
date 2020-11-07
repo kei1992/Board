@@ -1,7 +1,6 @@
 .container
   =render 'commons/createboard'
   =render 'commons/tag_list_all'
-  %binding.pry
   .container-board
     %h2.text-info All Board
     .row.mx-auto.card_row
@@ -18,7 +17,8 @@
             .card_taglist
               =render 'commons/tag_list',tag_list: board.tag_list
             .card_detail
-              = image_tag board.user.avatar_image
+              = link_to account_path(board.user) do
+                = image_tag board.user.avatar_image
             - if user_signed_in? && current_user.has_written?(board)
               .board_detail_actions.mt-1
                 = link_to 'Edit', edit_board_path(board),class:'btn btn-info'
