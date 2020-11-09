@@ -26,6 +26,26 @@ require("@rails/actiontext")
 
 import $ from 'jquery'
 
+$(function () {
+	const pageTop = $('.scrollTop')
+	pageTop.hide()
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 100) {
+			pageTop.fadeIn()
+		} else {
+			pageTop.fadeOut()
+		}
+	})
+	pageTop.click(function () {
+		$('body,html').animate({ scrollTop: 0 }, 500)
+	})
+})
+
+
+$(document).on('click', '.dropdown-header-hidden', () => {
+	$('.userProfileEmail').removeClass('hidden')
+})
+
 // モーダル操作
 const modalOpen = $(document).on('click', '.modal-btn', () => {
 	$('.modal-background').fadeIn(100)
@@ -37,7 +57,6 @@ $(document).on('click', '.hidden_btn', () => {
 	$('.hidden_btn').fadeOut(100)
 	$('.modal-background').fadeOut(100)
 	$('.modal').fadeOut(100)
-	$('html,body').animate({ scrollTop: 0 }, 'slow');
 })
 
 

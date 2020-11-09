@@ -26,6 +26,12 @@ $header-padding-y: 16px;
   }
 }
 
+@media screen and (max-width: 767px) {
+  .userProfileEmail{
+    display:none;
+  }
+}
+
 .dropbtn {
   border: none;
 }
