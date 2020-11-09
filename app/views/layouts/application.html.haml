@@ -22,8 +22,11 @@
 
     - if user_signed_in?
       .dropdown-header.pr-0
-        = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
-        %button.btn.btn-info.modal-btn.ml-3 Add New
+        .dropdown-header-hidden-parent.d-flex
+          .dropdown-header-hidden.d-flex
+            = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
+            = render 'commons/userdata',user: current_user
+          %button.btn.btn-info.modal-btn.ml-3 Add New
         .modal-background
           .modal.container
             .row

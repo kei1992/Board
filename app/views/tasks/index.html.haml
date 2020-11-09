@@ -1,7 +1,7 @@
 .container.mt-5
 	=render 'commons/createboard'
 	.container-task
-		=link_to '<< Back',boards_path,class:'btn btn-info'
+		=link_to '前のページに戻る',boards_path,class:'btn btn-info'
 		-@tasks.each do |task|
 			.card#task-show{data:{board_id: @board.id, task_id: task.id}}
 				=link_to board_task_path(@board,task) do
@@ -33,6 +33,7 @@
 				.float_btn
 					%i.fa.fa-plus
 				%p Add New Task
+		=render 'commons/scrollbtn'
 		=paginate @tasks
 	=javascript_pack_tag 'board'
 	=javascript_pack_tag 'task'

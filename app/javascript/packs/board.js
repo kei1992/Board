@@ -20,7 +20,6 @@ $(function () {
 		const boardName = $('#board_name').val()
 		const boardDescription = $('#board_description').val()
 		const tagList = $('#tag_list').val()
-		debugger
 		if (!boardDescription || !boardName) {
 			window.alert('Please fill in the form.')
 		} else {
@@ -31,6 +30,7 @@ $(function () {
 					$('#board_description').val('')
 					$('#tag_list').val('')
 				})
+			history.go(0)
 		}
 	})
 })
