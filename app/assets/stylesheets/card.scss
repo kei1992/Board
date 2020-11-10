@@ -16,14 +16,13 @@
   }
 
   &_name {
-    font-size: 22px;
-    margin-bottom: 8px;
+    font-size: 24px;
     font-family: Avenir;
     font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
+    font-weight: bold;
     color: #000000;
     display :flex;
+    word-wrap: break-word;
 
     .board_detail_actions {
       right: 34px;
@@ -44,9 +43,23 @@
     font-family: Avenir;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 25px;
     color: #000000;
     word-wrap: break-word;
+  }
+
+  &_created_at{
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+  }
+
+  &_updated_at{
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
   }
 
   &_readmore{

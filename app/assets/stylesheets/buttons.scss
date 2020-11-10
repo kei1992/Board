@@ -25,4 +25,14 @@
     color: $primary-color;
     padding: 16px 0;
     font-weight: bold;
-  }
+}
+
+@media screen and (max-width: 768px){
+    .btn-find-word{
+        width:100%;
+    }
+}
+
+.btn-tag-design{
+    padding:5px 10px;
+}

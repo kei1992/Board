@@ -1,0 +1,22 @@
+.container-find-word-area.mt-5.mb-5
+	%h2.py-2.text-info キーワード検索
+	= search_form_for @q do |f|
+		= f.search_field :name_cont,placeholder:"プログラミング",class:'py-2 px-5'
+		= f.submit "検索",class:'btn btn-info btn-find-word text-white py-2 mt-3  mt-lg-0'
+	%h2.py-2.mt-4.text-info タグ一覧
+	- Board.all_tags.each do |tag_all|
+		%p.btn.btn-warning.text-white
+			= link_to tag_all, boards_path(tag_name: tag_all.name),class:'text-white text-decoration-none'
+	-# %h2.py-2.mt-4.text-info 新規募集
+	-# .row
+	-# 	%p 募集タイトル
+	-# 	= text_area_tag :board_name, '',class:'ssm'
+	-# .row
+	-# 	%p.mt-2 募集内容
+	-# 	=text_area_tag :board_description, '', class:'sm'
+	-# .row
+	-# 	%p.mt-2 タグ
+	-# 	=text_area_tag :tag_list,'', class:'ssm',placeholder: 'タグとタグの間に,(カンマ)を入力してください'
+	-# .row
+	-# 	.btn.btn-first.post-new-board
+	-# 		%p.mb-0 新規募集を投稿
