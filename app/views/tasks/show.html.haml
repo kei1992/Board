@@ -1,6 +1,6 @@
-.container
+.container.mt-5
   =render 'commons/createboard'
-  =link_to '<< Back',:back,class:'btn btn-info'
+  =link_to '前のページに戻る',:back,class:'btn btn-info'
   .task#task-show{data:{board_id: @board.id, task_id: @task.id}}
     .task_title
       %h2.task_name= @task.name

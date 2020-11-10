@@ -41,6 +41,9 @@ $(function () {
 	})
 })
 
+$(document).on('click','.btn-find-word',()=>{
+	$('#q_name_cont').val('')
+})
 
 $(document).on('click', '.dropdown-header-hidden', () => {
 	$('.userProfileEmail').removeClass('hidden')

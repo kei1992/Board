@@ -38,6 +38,7 @@ gem 'omniauth-twitter'
 gem 'sprockets', '~> 3.7.2'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'react_on_rails'
+gem 'ransack'
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'

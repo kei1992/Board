@@ -1,28 +1,41 @@
 .container
   =render 'commons/createboard'
-  =render 'commons/tag_list_all'
-  .container-board
-    %h2.text-info All Board
-    .row.mx-auto.card_row
-      - @boards.each do |board|
-        .card.col-12.col-md-5.mx-auto
-          .card_content
-            .card_name
-              = board.name
-            .card_description
-              = board.description
-            .card_readmore
-              =link_to board_tasks_path(board) do
-                %p Read More >>
-            .card_taglist
-              =render 'commons/tag_list',tag_list: board.tag_list
-            .card_detail
-              = link_to account_path(board.user) do
-                = image_tag board.user.avatar_image
-            - if user_signed_in? && current_user.has_written?(board)
-              .board_detail_actions.mt-1
-                = link_to 'Edit', edit_board_path(board),class:'btn btn-info'
-                = link_to 'Delete', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '},class:'btn btn-danger'
+  .row
+    .col-12.col-md-5
+      .container-find-parts
+        .row
+          .col-12
+            =render 'commons/sidebar'
+    .col-12.col-md-7
+      .container-board
+        %h2.text-info.mt-4.mt-md-5.py-2 募集一覧
+        .row.mx-auto.card_row
+          .col
+            - @boards.each do |board|
+              .card
+                .card_content
+                  .card_taglist
+                    =render 'commons/tag_list',tag_list: board.tag_list
+                  .card_name
+                    = board.name
+                  .card_description.mb-3
+                    = board.description
+                  .card_readmore
+                    =link_to board_tasks_path(board),class:'text-decoration-none' do
+                      %p.text-info 募集を詳しく見る >>
+                  .card_created_at.d-flex
+                    %p 投稿日：
+                    = board.created_at.to_s(:datetime_jp)
+                  .card_updated_at.d-flex
+                    %p 更新日：
+                    = board.updated_at.to_s(:datetime_jp)
+                  .card_detail
+                    = link_to account_path(board.user) do
+                      = image_tag board.user.avatar_image
+                  - if user_signed_in? && current_user.has_written?(board)
+                    .board_detail_actions.mt-1
+                      = link_to '編集', edit_board_path(board),class:'btn btn-info'
+                      = link_to '削除', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '},class:'btn btn-danger'
     .scrollTop
       = link_to '' do
         =image_tag 'top-img.png'
