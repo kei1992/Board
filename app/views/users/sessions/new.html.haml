@@ -1,23 +1,27 @@
-.container
-  %h2 Log in
+.container.mt-5
+  %h2.py-2.text-info ログイン
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
-      = f.label :email
+      = f.label :Eメール
       %br/
       = f.email_field :email, autofocus: true, autocomplete: "email",class:"text"
     .field
-      = f.label :password
+      = f.label :パスワード
       %br/
       = f.password_field :password, autocomplete: "current-password",class:"text"
     .actions
-      = f.submit "Log in with Email",class:"text",class:"btn btn-first" do
+      = f.submit "Emailでログイン",class:"text",class:"btn btn-first mt-2" do
         %i.fa.fa-envelope
-      %p.form_explanation If you want to log in with your SNS account, you can choose the buttons below.
-      = link_to user_facebook_omniauth_authorize_path,class:"sign_in_facebook_btn" do
-        %i.fa.fa-facebook-square.company_mark
-          Log in with Facebook account
-      = link_to user_google_oauth2_omniauth_authorize_path,class:"sign_in_google_btn" do
-        %i.fa.fa-google.company_mark
-          Log in with Google account
-  %h2 Other options
+  %h2.py-2.text-info SNSでログイン
+  %p.form_explanation
+    .row.mt-5
+      .col-6
+        = link_to user_facebook_omniauth_authorize_path,class:"btn btn-primary w-100 py-3" do
+          %i.fa.fa-facebook-square.company_mark
+            Facebookでログイン
+      .col-6.mb-5
+        = link_to user_google_oauth2_omniauth_authorize_path,class:"btn btn-danger w-100 py-3" do
+          %i.fa.fa-google.company_mark
+            Googleでログイン
+  %h2.text-info その他のオプション
   = render "users/shared/links"
