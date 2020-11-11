@@ -19,6 +19,8 @@
       .header_pagelogin
         = link_to new_user_session_path do
           .btn.btn-info ログイン
+        = link_to users_guest_sign_in_path, method: :post do
+          .btn.btn-warning.text-white ゲストログイン（閲覧用)
 
     - if user_signed_in?
       .dropdown-header.pr-0

@@ -42,7 +42,7 @@ $(function () {
 })
 
 $(document).on('click','.btn-find-word',()=>{
-	$('#q_name_cont').val('')
+	$('.btn-boards-all').removeClass('hidden')
 })
 
 $(document).on('click', '.dropdown-header-hidden', () => {
