@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_06_150916) do
+ActiveRecord::Schema.define(version: 2020_11_11_045710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,21 @@ ActiveRecord::Schema.define(version: 2020_11_06_150916) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "direct_messages", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "nickname"
@@ -100,6 +115,12 @@ ActiveRecord::Schema.define(version: 2020_11_06_150916) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
     t.index ["following_id"], name: "index_relationships_on_following_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sns_credentials", force: :cascade do |t|

@@ -18,7 +18,7 @@
     -unless user_signed_in?
       .header_pagelogin
         = link_to new_user_session_path do
-          .btn.btn-info Login
+          .btn.btn-info ログイン
 
     - if user_signed_in?
       .dropdown-header.pr-0
@@ -26,7 +26,7 @@
           .dropdown-header-hidden.d-flex
             = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
             = render 'commons/userdata',user: current_user
-          %button.btn.btn-info.modal-btn.ml-3 Add New
+          %button.btn.btn-info.modal-btn.ml-3 機能を使う
         .modal-background
           .modal.container
             .row
@@ -35,23 +35,17 @@
               .col-12.col-md-3.modal-children-note.modal-children-background.mx-auto
                 .modal-siblings.modal-note
                   =image_tag 'note.png'
-                  %p.modal-text Create Board
+                  %p.modal-text 募集を作成
 
               .col-12.col-md-3.modal-children-people.modal-children-background.mx-auto
                 =link_to edit_profile_path do
                   .modal-siblings
                     =image_tag 'people.png'
-                    %p.modal-text Edit Profile
+                    %p.modal-text プロフィール
 
               .col-12.col-md-3.modal-children-logout.modal-children-background.mx-auto
                 =link_to destroy_user_session_path, data: { method: 'delete' } do
                   .modal-siblings
                     =image_tag 'logout.png'
-                    %p.modal-text Logout
-
-
-  - if flash.present?
-    .flash
-      - flash.each do |key, value|
-        %div{:class => key}= value
+                    %p.modal-text ログアウト
   = yield

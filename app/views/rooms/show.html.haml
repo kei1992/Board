@@ -1,0 +1,12 @@
+.container.mt-5
+  %h1= @room.name
+  %h4 参加者
+  - @entries.each do |e|
+    = link_to e.user.email, user_path(e.user_id)
+  %h1 Chat room
+  %form
+    %label Say something:
+    %br/
+    %input#chat-input{"data-behavior" => "room_speaker", :type => "text"}/
+  #direct_messages{"data-room_id" => "#{@room.id}"}
+    = render @direct_messages
