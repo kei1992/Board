@@ -6,7 +6,6 @@ class BookmarksController < ApplicationController
 		bookmark_status_box = []
 		bookmark_status = current_user.has_bookmarked?(board)
 		render json:{hasBookmarked: bookmark_status}
-		end
 	end
 
 	def create
