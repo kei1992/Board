@@ -40,10 +40,16 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships, source: :follower
 
   has_one :profile, dependent: :destroy
-  
+
   has_many :entries
   has_many :direct_messages
   has_many :rooms, through: :entries
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 
   def follow!(user)
     user_id = get_user_id(user)
