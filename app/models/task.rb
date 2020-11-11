@@ -34,7 +34,7 @@ class Task < ApplicationRecord
         comments.count
     end
 
-    def archive_by(user)
-        archives.find{|f| f.user_id == user.id}
-    end
+    # def archive_by(user)
+    #     archives.find{|f| f.user_id == user.id}
+    # end
 end
