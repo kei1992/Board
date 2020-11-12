@@ -8,6 +8,7 @@ axios.defaults.headers['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf
 const Favorite = (props) => {
 	const { boardId, favoriteId } = props;
 	const [id, setId] = useState(favoriteId);
+	const [count, setCount] = useState(0)
 
 	const clicked = async () => {
 		if (id == null) {
@@ -21,7 +22,11 @@ const Favorite = (props) => {
 
 	return (
 		<>
-			<HeartFill color={id ? 'red' : '#616161'} size={25} onClick={clicked} />
+			<HeartFill
+				color={id ? 'red' : '#616161'}
+				size={25}
+				onClick={clicked}
+			/>
 		</>
 	);
 };
