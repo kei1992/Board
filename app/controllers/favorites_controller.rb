@@ -10,6 +10,8 @@ class FavoritesController < ApplicationController
 		render json: favorite
 	end
 
+	private
+	
 	def favorite_params
 		params.require(:favorite).permit(:board_id)
 	end

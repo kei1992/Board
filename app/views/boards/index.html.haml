@@ -37,7 +37,8 @@
                     =link_to board_tasks_path(board),class:'text-decoration-none' do
                       %p.text-info 募集を詳しく見る >>
                     .card_favorite.ml-auto
-                      = react_component("Favorite", props: { boardId: board.id, favoriteId: board.favorite_by(current_user)&.id }, prerender: false)
+                      -if user_signed_in?
+                        = react_component("Favorite", props: { boardId: board.id, favoriteId: board.favorite_by(current_user)&.id }, prerender: false)
                   .card_created_at.d-flex
                     %p 投稿日：
                     = board.created_at.to_s(:datetime_jp)
@@ -45,13 +46,13 @@
                     %p 更新日：
                     = board.updated_at.to_s(:datetime_jp)
 
-                  .card_detail
+                  .card_detail.d-flex
                     = link_to account_path(board.user) do
                       = image_tag board.user.avatar_image
-                  - if user_signed_in? && current_user.has_written?(board)
-                    .board_detail_actions.mt-1
-                      = link_to '編集', edit_board_path(board),class:'btn btn-info'
-                      = link_to '削除', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '},class:'btn btn-danger'
+                    - if user_signed_in? && current_user.has_written?(board)
+                      .board_detail_actions.ml-auto
+                        = link_to '編集', edit_board_path(board),class:'btn btn-info'
+                        = link_to '削除', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '},class:'btn btn-danger'
     .scrollTop
       = link_to '' do
         =image_tag 'top-img.png'

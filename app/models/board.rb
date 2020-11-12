@@ -27,6 +27,7 @@ class Board < ApplicationRecord
     has_rich_text :description
 
     def favorite_by(user)
+        # favorites.find_by(user_id: user.id)
         favorites.find{|f| f.user_id == user.id}
     end
 end
