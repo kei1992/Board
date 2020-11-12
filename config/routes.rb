@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   end
 
   root to: 'boards#index'
+  resources :favorites, only:[:create, :destroy]
   resources :boards do
     resource :bookmark,only:[:show,:create, :destroy]
     resources :tasks do
-      resource :archive,only:[:create, :destroy]
       resources :comments, only:[:index,:new ,:create, :update, :destroy]
     end
   end
