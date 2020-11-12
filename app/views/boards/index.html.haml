@@ -30,18 +30,21 @@
                   .card_taglist
                     =render 'commons/tag_list',tag_list: board.tag_list
                   .card_name
-                    = board.name
+                    = board.name.truncate(25)
                   .card_description.mb-3
                     = board.description
-                  .card_readmore
+                  .card_readmore.d-flex
                     =link_to board_tasks_path(board),class:'text-decoration-none' do
                       %p.text-info 募集を詳しく見る >>
+                    .card_favorite.ml-auto
+                      = react_component("Favorite", props: { boardId: board.id, favoriteId: board.favorite_by(current_user)&.id }, prerender: false)
                   .card_created_at.d-flex
                     %p 投稿日：
                     = board.created_at.to_s(:datetime_jp)
                   .card_updated_at.d-flex
                     %p 更新日：
                     = board.updated_at.to_s(:datetime_jp)
+
                   .card_detail
                     = link_to account_path(board.user) do
                       = image_tag board.user.avatar_image

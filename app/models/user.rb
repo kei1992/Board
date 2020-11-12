@@ -30,9 +30,9 @@ class User < ApplicationRecord
   has_many :boards, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :bookmarks,dependent: :destroy
   has_many :my_bookmarks, through: :bookmarks, source: :board
-  has_many :archives, dependent: :destroy
 
   has_many :following_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :followings, through: :following_relationships, source: :following
