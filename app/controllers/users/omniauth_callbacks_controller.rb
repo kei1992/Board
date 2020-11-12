@@ -30,7 +30,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_from :google
   end
 
-  # FacebookからOmniAuthで取得したすべての情報はrequest.env["omniauth.auth"]に格納される
   private
 
   def callback_from(provider)
