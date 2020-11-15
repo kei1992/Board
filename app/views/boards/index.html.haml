@@ -31,8 +31,8 @@
                     =render 'commons/tag_list',tag_list: board.tag_list
                   .card_name
                     = board.name.truncate(25)
-                  .card_description.mb-3
-                    = board.description
+                  .card_description
+                    = truncate(strip_tags(board.content.to_s),length: 100)
                   .card_readmore.d-flex
                     =link_to board_tasks_path(board),class:'text-decoration-none' do
                       %p.text-info 募集を詳しく見る >>
