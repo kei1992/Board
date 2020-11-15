@@ -2,12 +2,11 @@
 #
 # Table name: boards
 #
-#  id          :bigint           not null, primary key
-#  description :text
-#  name        :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :bigint
+#  id         :bigint           not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :bigint
 #
 # Indexes
 #
@@ -17,17 +16,15 @@ class Board < ApplicationRecord
     acts_as_taggable
 
     validates :name, presence: true
-    validates :description, presence: true
 
     belongs_to :user
     has_many :tasks, dependent: :destroy
     has_many :bookmarks, dependent: :destroy
     has_many :favorites, dependent: :destroy
     has_many :profiles, through: :users
-    has_rich_text :description
+    has_rich_text :content
 
     def favorite_by(user)
-        # favorites.find_by(user_id: user.id)
-        favorites.find{|f| f.user_id == user.id}
+        favorites.find_by(user_id: user.id)
     end
 end

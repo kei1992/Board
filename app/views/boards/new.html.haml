@@ -1,18 +1,18 @@
-.container
+.container.mt-5
   %ul
   - @board.errors.full_messages.each do |message|
     %li= message
   = form_with(model: @board, url: boards_path, method: 'post',local: true) do |f|
-    %div
-      = f.label :name, 'Name'
+    %div.mt-3
+      = f.label :name, 'タイトル'
     %div
       = f.text_field :name, class: 'text'
     %div
-      = f.label :description, 'Description'
+      = f.label :content, '内容'
     %div
-      = f.rich_text_area :description
+      = f.rich_text_area :content, class: 'text'
     %div
-      = f.label :tag_list
+      = f.label :tag_list,'タグ'
     %div
       = f.text_field :tag_list, value: @board.tag_list.join(','), class: "form-control"
-    = f.submit 'Submit', class: 'btn-first'
+    = f.submit '送信', class: 'btn-first'

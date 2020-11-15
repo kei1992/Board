@@ -21,9 +21,6 @@ const { default: Axios } = require("axios")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-require("trix")
-require("@rails/actiontext")
-
 import $ from 'jquery'
 
 $(function () {
@@ -41,7 +38,7 @@ $(function () {
 	})
 })
 
-$(document).on('click','.btn-find-word',()=>{
+$(document).on('click', '.btn-find-word', () => {
 	$('.btn-boards-all').removeClass('hidden')
 })
 
@@ -71,14 +68,16 @@ $(document).on('click', '.uparrow', () => {
 	})
 })
 
-// 新記事投稿
-$(document).on('click', '.modal-note', () => {
-	$('.modal-background').fadeOut(100)
-	$('.modal').fadeOut(100)
-	$('.hidden_btn').fadeOut(100)
-	$('.container-board').fadeOut(10)
-	$('.new_board').removeClass('hidden')
-	$('.add_new_board_name').removeClass('hidden')
-	$('.add_new_board_description').removeClass('hidden')
-	$('.post-new-board').removeClass('hidden')
-})
+// // 新記事投稿
+// $(document).on('click', '.modal-note', () => {
+// 	$('.modal-background').fadeOut(100)
+// 	$('.modal').fadeOut(100)
+// 	$('.hidden_btn').fadeOut(100)
+// 	$('.container-board').fadeOut(10)
+// 	$('.new_board').removeClass('hidden')
+// 	$('.add_new_board_name').removeClass('hidden')
+// 	$('.add_new_board_description').removeClass('hidden')
+// 	$('.post-new-board').removeClass('hidden')
+// })
+require("trix")
+require("@rails/actiontext")

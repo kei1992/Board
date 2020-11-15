@@ -37,8 +37,9 @@
             .row.mx-auto.mt-5.modal-row
               .col-12.col-md-3.modal-children-note.modal-children-background.mx-auto
                 .modal-siblings.modal-note
-                  =image_tag 'note.png'
-                  %p.modal-text 募集を作成
+                  = link_to new_board_path, class:'text-decoration-none' do
+                    = image_tag 'note.png'
+                    %p.modal-text 募集を作成
 
               .col-12.col-md-3.modal-children-people.modal-children-background.mx-auto
                 =link_to edit_profile_path do

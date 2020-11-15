@@ -17,11 +17,9 @@ class BoardsController < ApplicationController
 
     def create
         @board = current_user.boards.build(board_params)
-
         if @board.save
-            redirect_to root_path, notice:'Success Save'
+            redirect_to root_path
         else
-            flash.now[:error] = 'Failed Save'
             render :new
         end
     end
@@ -48,6 +46,6 @@ class BoardsController < ApplicationController
 
     private
     def board_params
-        params.require(:board).permit(:name, :description, :tag_list)
+        params.require(:board).permit(:name, :content, :tag_list)
     end
 end
