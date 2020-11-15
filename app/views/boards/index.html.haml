@@ -52,7 +52,7 @@
                     - if user_signed_in? && current_user.has_written?(board)
                       .board_detail_actions.ml-auto
                         = link_to '編集', edit_board_path(board),class:'btn btn-info'
-                        = link_to '削除', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '},class:'btn btn-danger'
+                        = link_to '削除', board_path(board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか? '},class:'btn btn-danger'
     .scrollTop
       = link_to '' do
         =image_tag 'top-img.png'
