@@ -15,4 +15,4 @@
       = f.label :tag_list,'タグ'
     %div
       = f.text_field :tag_list, value: @board.tag_list.join(','), class: "form-control"
-    = f.submit '送信', class: 'btn-first'
+    = f.submit '送信', data:{confirm:'送信しても良いですか？',disable_with:'処理中...'},class: 'btn-first'
