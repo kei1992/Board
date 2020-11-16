@@ -5,26 +5,13 @@
 		.row
 			.col-12.col-md-8
 				%h2.text-info.text-md-center 募集内容
-				.card
-					.card_content
-						.card_taglist
-							=render 'commons/tag_list',tag_list: @board.tag_list
-						.card_name.mb-3
-							= @board.name
-						.card_description
-							= @board.content
-							.card_created_at.d-flex.mt-3
-								%p 投稿日：
-								= @board.created_at.to_s(:datetime_jp)
-							.card_updated_at.d-flex
-								%p 更新日：
-								= @board.updated_at.to_s(:datetime_jp)
-					- if user_signed_in? && current_user.has_written?(@board)
-						.row.board_detail_actions
-							.col-6
-								= link_to '編集', edit_board_path(@board),class:'btn btn-info w-100'
-							.col-6
-								= link_to '削除', board_path(@board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか? '},class:'btn btn-danger w-100'
+				= render 'commons/cardcontent',board:@board
+				- if user_signed_in? && current_user.has_written?(@board)
+					.row.board_detail_actions
+						.col-6
+							= link_to '編集', edit_board_path(@board),class:'btn btn-info w-100'
+						.col-6
+							= link_to '削除', board_path(@board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか?', disabled_with:'処理中...'},class:'btn btn-danger w-100'
 			.col-12.col-md-4
 				%h2.text-info.text-md-center 募集している人
 				.card
@@ -33,11 +20,14 @@
 							= image_tag @board.user.avatar_image,class:'mr-0'
 					.row
 						.col-6.col-md-6
-							%p.text-center Followers
-							%p.text-center= @board.user.followings.count
-						.col-6.col-md-6
-							%p.text-center Followings
+							%p.text-center.small Followers
 							%p.text-center= @board.user.followers.count
+						.col-6.col-md-6
+							%p.text-center.small Followings
+							%p.text-center= @board.user.followings.count
+						.col-12
+							= link_to account_path(@board.user),class:'text-decoration-none text-white' do
+								.btn.btn-info.w-100 プロフィールを確認
 
 	.container-task
 		-@tasks.each do |task|
