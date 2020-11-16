@@ -22,7 +22,7 @@
     font-weight: bold;
     color: #000000;
     display :flex;
-    word-wrap: break-word;
+    word-break: break-all;
 
     .board_detail_actions {
       right: 34px;

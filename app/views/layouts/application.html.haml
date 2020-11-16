@@ -15,7 +15,8 @@
     .header_pageTitle
       = link_to root_path ,class:' d-flex align-items-center text-decoration-none' do
         =image_tag 'logodesign.png',class:'ml-auto'
-        %h2.mb-0.text-info.ml-3 Boards
+        %h2.service-logo.mb-0.text-info.ml-3 Boards
+    = link_to_unless_current '募集を探す', boards_path, class:'text-decoration-none text-info small'
     -unless user_signed_in?
       .header_pagelogin
         = link_to new_user_session_path do
@@ -24,6 +25,7 @@
           .btn.btn-warning.text-white ゲストログイン（閲覧用)
 
     - if user_signed_in?
+      = link_to '募集する',new_board_path, class:'text-decoration-none text-info small'
       .dropdown-header.pr-0
         .dropdown-header-hidden-parent.d-flex
           .dropdown-header-hidden.d-flex
@@ -52,4 +54,5 @@
                   .modal-siblings
                     =image_tag 'logout.png'
                     %p.modal-text ログアウト
+
   = yield

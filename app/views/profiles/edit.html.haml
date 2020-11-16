@@ -1,19 +1,19 @@
-.container
+.container.mt-5
   %ul
     - @profile.errors.full_messages.each do |message|
       %li= message
-
+  %h2.py-2.text-info プロフィール編集
   = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
     %div
-      = f.label :avatar, 'Profile Image'
+      = f.label :avatar, 'プロフィール画像'
     %div
       = f.file_field :avatar, class:'text'
     %div
-      = f.label :nickname, 'Nickname'
+      = f.label :nickname, 'ニックネーム'
     %div
       = f.text_field :nickname, class: 'text'
     %div
-      = f.label :introduction, 'Introduction'
+      = f.label :introduction, '自己紹介'
     %div
       = f.text_area :introduction
-    = f.submit 'Submit', class: 'btn btn-first'
+    = f.submit '編集を完了する', class: 'btn btn-first'

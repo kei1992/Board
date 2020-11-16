@@ -1,0 +1,14 @@
+.card
+	.card_content
+		.card_taglist
+			=render 'commons/tag_list',tag_list: board.tag_list
+		.card_name.mb-3
+			= board.name
+		.card_description
+			= board.content
+			.card_created_at.d-flex.mt-3
+				%p 投稿日：
+				= board.created_at.to_s(:datetime_jp)
+			.card_updated_at.d-flex
+				%p 更新日：
+				= board.updated_at.to_s(:datetime_jp)
