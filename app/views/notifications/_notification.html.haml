@@ -1,0 +1,18 @@
+.container
+	%h2.text-info 通知一覧
+	%hr
+	- visitor = notification.visitor
+	- visited = notification.visited
+	.row.align-items-center.justify-content-center
+		= image_tag visitor.avatar_image, class: "header_avatar mr-1"
+		%strong
+			= link_to account_path(visitor) ,class:'text-warning' do
+				= visitor.profile.nickname
+		= 'さんが'
+		- case notification.action
+		- when 'like' then
+			%strong
+				= link_to 'あなたの投稿', board_tasks_path(notification.board), class:'text-warning'
+			= 'にいいねしました'
+			%p.mb-0.ml-4= "#{time_ago_in_words(notification.created_at)}前"
+	%hr

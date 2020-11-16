@@ -16,22 +16,29 @@
       = link_to root_path ,class:' d-flex align-items-center text-decoration-none' do
         =image_tag 'logodesign.png',class:'ml-auto'
         %h2.service-logo.mb-0.text-info.ml-3 Boards
-    = link_to_unless_current '募集を探す', boards_path, class:'text-decoration-none text-info small'
+    = link_to '募集を探す', boards_path, class:'text-decoration-none text-info small'
     -unless user_signed_in?
       .header_pagelogin
         = link_to new_user_session_path do
           .btn.btn-info ログイン
         = link_to users_guest_sign_in_path, method: :post do
           .btn.btn-warning.text-white ゲストログイン（閲覧用)
-
     - if user_signed_in?
       = link_to '募集する',new_board_path, class:'text-decoration-none text-info small'
+      = link_to notifications_path do
+        -if unchecked_notifications.any?
+          %span.fa-stack
+            %i.fa.fa-bell.n-bell.text-info
+            %i.fa.fa-circle.n-circle.fa-stack-1x.text-warning
+        -else
+          %i.fa.fa-bell.text-info
       .dropdown-header.pr-0
         .dropdown-header-hidden-parent.d-flex
           .dropdown-header-hidden.d-flex
             = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
             = render 'commons/userdata',user: current_user
           %button.btn.btn-info.modal-btn.ml-3 機能を使う
+
         .modal-background
           .modal.container
             .row
