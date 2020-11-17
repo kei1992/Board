@@ -12,7 +12,7 @@
 							= link_to '編集', edit_board_path(@board),class:'btn btn-info w-100'
 						.col-6
 							= link_to '削除', board_path(@board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか?', disabled_with:'処理中...'},class:'btn btn-danger w-100'
-			.col-12.col-md-4
+			.col-12.mt-4.col-md-5.mt-md-0
 				%h2.text-info.text-md-center 募集している人
 				.card
 					.row.mb-3

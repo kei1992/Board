@@ -1,8 +1,23 @@
-.container.mt-5
+-if request.referer&.include?('/users')
+  .container-fluid.mt-5.fixed-top
+    .row.bg-white
+      .col-4.text-center.text-info
+        %p.pt-4 ステップ①
+        %p Eメールの登録
+      .col-4.text-center
+        %i.fa.fa-angle-double-right.fa-4x.pt-4.text-warning
+      .col-4.text-center.text-info
+        %p.pt-4 ステップ②
+        %p プロフィールの登録
+-if user_signed_in?
+  .container-fluid.edit-profile-title.mt-5.fixed-top
+    .row.bg-white.justify-content-center
+      %p.pt-4.text-warning.font-weight-bold.lg プロフィールを充実させるとマッチングしやすくなります。
+.container
   %ul
     - @profile.errors.full_messages.each do |message|
       %li= message
-  %h2.py-2.text-info プロフィール編集
+  %h2.edit-profile-title.py-4.text-info プロフィール編集
   = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
     %div
       = f.label :avatar, 'プロフィール画像'

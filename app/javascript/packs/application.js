@@ -51,6 +51,7 @@ const modalOpen = $(document).on('click', '.modal-btn', () => {
 	$('.modal-background').fadeIn(100)
 	$('.modal').fadeIn(100)
 	$('.hidden_btn').fadeIn(100)
+	$('.edit-profile-title').addClass('hidden')
 })
 
 $(document).on('click', '.hidden_btn', () => {
