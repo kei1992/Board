@@ -1,6 +1,6 @@
 .container.mt-5
-	%h2.mt-3.text-info User info
-	.profile.mt-3
+	%h2.mt-3.text-info プロフィール
+	.profile.mt-3.bg-white.p-3
 		.profile_info
 		= image_tag @user.avatar_image,class:'header_avatar'
 		- if @user == current_user
@@ -10,6 +10,8 @@
 				= link_to 'Unfollow',account_unfollows_path(@user),data:{method: 'post'},class:'ml-3 btn btn-info'
 			-else
 				= link_to 'Follow',account_follows_path(@user),data:{method: 'post'},class:'ml-3 btn btn-info'
+			%h3.mt-2.font-weight-bold= @user.profile.nickname
+			%p.mt-2= @user.profile.introduction
 	.container-board
 		.row.mx-auto.card_row
 			- @user.boards.each do |board|
