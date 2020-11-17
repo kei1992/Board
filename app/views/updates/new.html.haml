@@ -1,0 +1,18 @@
+.container.mt-5
+  %ul
+  - @update.errors.full_messages.each do |message|
+    %li= message
+  = form_with(model: @update, url: board_tasks_path, method: 'post', local: true) do |f|
+    %div
+      = f.label :eyecatch,'アイキャッチ画像'
+    %div
+      = f.file_field :eyecatch,class:'text'
+    %div
+      = f.label :title, 'タイトル'
+    %div
+      = f.text_field :title, class: 'text'
+    %div
+      = f.label :description, '変更内容'
+    %div
+      = f.text_field :description
+    = f.submit '投稿',class: 'btn-first'

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'boards#index'
+  resources :updates, only:[:index,:new,:create,:edit]
   resources :favorites, only:[:show, :create, :destroy]
   resources :notifications, only:[:index]
   resources :boards, only:[:index,:new, :create,:edit,:update, :destroy] do
