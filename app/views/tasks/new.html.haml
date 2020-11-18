@@ -15,8 +15,4 @@
       = f.label :description, 'メッセージ内容'
     %div
       = f.rich_text_area :description
-    %div
-      = f.label :deadline, 'Deadline'
-    %div
-      = f.date_field :deadline, class:'text'
     = f.submit '提案する',data:{confirm:'提案を完了しても良いですか？',disable_with:'処理中...'} ,class: 'btn-first'

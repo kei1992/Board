@@ -19,16 +19,8 @@
       .card_content
         .card_description
           = @task.description
-        .card_deadline
-          %p.card_deadline_text Deadline
-          -if @task.deadline.present?
-            %p= @task.deadline
-          -else
-            %p Unknown
-
   %h2.task_comment Comment
   .comment-container
-
 
   .new_board
     .btn.btn-first.show-comment-form

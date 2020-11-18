@@ -12,7 +12,7 @@
 							= link_to '編集', edit_board_path(@board),class:'btn btn-info w-100'
 						.col-6
 							= link_to '削除', board_path(@board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか?', disabled_with:'処理中...'},class:'btn btn-danger w-100'
-			.col-12.mt-4.col-md-5.mt-md-0
+			.col-12.mt-4.col-md-4.mt-md-0
 				%h2.text-info.text-md-center 募集している人
 				.card
 					.row.mb-3
@@ -43,11 +43,11 @@
 					= task.description
 				.card_detail.d-flex
 					= image_tag task.user.avatar_image
-					.card_btn.ml-auto
-						%p= task.comment_count
-						=image_tag 'comment-img.png',class:'mr-0'
+					-# .card_btn.ml-auto
+					-# 	%p= task.comment_count
+					-# 	=image_tag 'comment-img.png',class:'mr-0'
 		.new_board
-			= link_to '提案する', new_board_task_path(@board), class:'btn btn-first'
+			= link_to '提案を作成する', new_board_task_path(@board), class:'btn btn-first'
 		=render 'commons/scrollbtn'
 		=paginate @tasks
 	=javascript_pack_tag 'board'
