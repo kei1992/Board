@@ -6,8 +6,11 @@
 	.row.align-items-center.justify-content-center
 		= image_tag visitor.avatar_image, class: "header_avatar mr-1"
 		%strong
-			= link_to account_path(visitor) ,class:'text-warning' do
-				= visitor.profile.nickname
+			-if visitor.email == 'guest@gmail.com'
+				%p ゲストユーザー
+			-else
+				= link_to account_path(visitor) ,class:'text-warning' do
+					= visitor.profile.nickname
 		= 'さんが'
 		- case notification.action
 		- when 'like' then

@@ -1,0 +1,11 @@
+.container.mt-5
+	%h2.py-3.text-info アップデート一覧
+	- @updates.each do |update|
+		%h3= update.created_at.to_s(:datetime_jp)
+		.card
+			.card_name
+				= update.title
+			.card_description
+				= update.description
+			.card_image
+				=image_tag update.image if update.image&.attached?
