@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   resources :favorites, only:[:show, :create, :destroy]
   resources :notifications, only:[:index]
   resources :boards, only:[:index,:new, :create,:edit,:update, :destroy] do
-    resource :bookmark,only:[:show,:create, :destroy]
     resources :tasks do
       resources :comments, only:[:index,:new ,:create, :update, :destroy]
     end
@@ -27,9 +26,8 @@ Rails.application.routes.draw do
     resources :follows, only: [:create]
     resources :unfollows, only: [:create]
   end
-  resource :profile, only:[:show, :edit, :update]
-  resources :mybookmarks, only:[:index]
 
+  resource :profile, only:[:show, :edit, :update]
   resources :users
   resources :rooms
 end

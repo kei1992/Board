@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
 	def after_sign_up_path_for(resource)
-    edit_profile_path
+    boards_path
   end
 
   def after_sign_in_path_for(resource)
     if current_user.admin?
       new_admin_update_path
     else
-      boards_path
+      edit_profile_path
     end
   end
 

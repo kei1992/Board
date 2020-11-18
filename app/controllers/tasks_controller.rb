@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
     def index
       @board = Board.find(params[:board_id])
-      @tasks = Task.all.page(params[:page]).per(4)
+      @tasks = @board.tasks.page(params[:page]).per(4)
     end
 
     def show
