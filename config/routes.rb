@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
-  def after_new_user_registration_path_for(resource)
-    profile_path(resource)
-  end
-
   root to: 'boards#index'
+  resources :updatesnew, only:[:index]
+  namespace :admin do
+    resources :updates, only:[:new,:create]
+  end
   resources :favorites, only:[:show, :create, :destroy]
   resources :notifications, only:[:index]
   resources :boards, only:[:index,:new, :create,:edit,:update, :destroy] do

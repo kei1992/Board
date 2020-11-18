@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    boards_path
+    if current_user.admin?
+      new_admin_update_path
+    else
+      boards_path
+    end
   end
 
   def after_sign_out_path_for(resource)

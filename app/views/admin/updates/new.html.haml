@@ -1,0 +1,16 @@
+.container.mt-5
+  %h2.py-3 新規アップデート
+  = form_with(model: @update, url: admin_updates_path , method: 'post',local: true) do |f|
+    %div
+      = f.label :title, 'タイトル'
+    %div
+      = f.text_field :title, class: 'text'
+    %div
+      = f.label :description, '変更内容'
+    %div
+      = f.text_field :description, class: 'text'
+    %div
+      = f.label :image,'画像'
+    %div
+      = f.file_field :image,class:'text'
+    = f.submit '送信',class: 'btn-first'

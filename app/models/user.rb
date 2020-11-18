@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  admin                  :boolean          default(FALSE)
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  provider               :string
@@ -26,6 +27,9 @@ class User < ApplicationRecord
   # deviceの機能を拡張
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable,:validatable, :omniauthable
+
+  has_many :updates,dependent: :destroy
+
 
   has_many :boards, dependent: :destroy
   has_many :tasks, dependent: :destroy
