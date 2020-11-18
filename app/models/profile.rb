@@ -18,6 +18,6 @@ class Profile < ApplicationRecord
     has_many :boards, through: :users
     has_one_attached :avatar
 
-    validates :nickname, presence: true
+    validates :nickname, presence: true, length: {maximum: 15}
     validates :introduction, presence: true, length: { maximum: 100 }
 end

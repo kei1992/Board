@@ -10,8 +10,12 @@
 				= link_to 'Unfollow',account_unfollows_path(@user),data:{method: 'post'},class:'ml-3 btn btn-info'
 			-else
 				= link_to 'Follow',account_follows_path(@user),data:{method: 'post'},class:'ml-3 btn btn-info'
-			%h3.mt-2.font-weight-bold= @user.profile.nickname
-			%p.mt-2= @user.profile.introduction
+			-if @user.profile.present?
+				%h3.mt-2.font-weight-bold= @user.profile.nickname
+				%p.mt-2= @user.profile.introduction
+			-else
+				%h3.mt-2.font-weight-bold ニックネームが未設定
+				%p.mt-2 自己紹介が未設定
 	.container-board
 		.row.mx-auto.card_row
 			- @user.boards.each do |board|

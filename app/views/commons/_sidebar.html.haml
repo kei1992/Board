@@ -7,4 +7,4 @@
 		%h2.py-2.mt-4.text-info タグ一覧
 		- Board.all_tags.each do |tag_all|
 			%p.btn.btn-warning.text-white
-				= link_to tag_all, boards_path(tag_name: tag_all.name),class:'text-white text-decoration-none'
+				= link_to "##{tag_all}", boards_path(tag_name: tag_all.name),class:'text-white text-decoration-none'

@@ -9,7 +9,7 @@
       .col-4.text-center.text-info
         %p.pt-4 ステップ②
         %p プロフィールの登録
--if user_signed_in?
+-if user_signed_in?&&@profile.introduction.present?
   .container-fluid.edit-profile-title.mt-5.fixed-top
     .row.bg-white.justify-content-center
       %p.pt-4.text-warning.font-weight-bold.lg プロフィールを充実させるとマッチングしやすくなります。
@@ -30,5 +30,5 @@
     %div
       = f.label :introduction, '自己紹介'
     %div
-      = f.text_area :introduction
+      = f.text_area :introduction,class:'sm'
     = f.submit '編集を完了する', class: 'btn btn-first'
