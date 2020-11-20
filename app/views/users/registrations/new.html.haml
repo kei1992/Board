@@ -1,14 +1,5 @@
-.container-fluid.mt-5.fixed-top
-  .row.bg-white
-    .col-4.text-center.text-info
-      %p.pt-4 ステップ①
-      %p Eメールの登録
-    .col-4.text-center
-      %i.fa.fa-angle-double-right.fa-4x.pt-4.text-warning
-    .col-4.text-center.text-info
-      %p.pt-4 ステップ②
-      %p プロフィールの登録
-.container.mt-5
+=render 'commons/registration_step',profile:@profile
+.container
   %h2.registration-title.text-info 新規登録
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "users/shared/error_messages", resource: resource
