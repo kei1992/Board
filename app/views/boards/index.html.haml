@@ -24,7 +24,7 @@
             = sort_link(@q, :created_at, "投稿日")
           .col-3.text-center
             = sort_link(@q, :updated_at, "更新日")
-          .col
+          .col-12.mb-5
             - @boards.each do |board|
               .card
                 .card_content
@@ -54,9 +54,9 @@
                       .board_detail_actions.ml-auto
                         = link_to '編集', edit_board_path(board),class:'btn btn-info'
                         = link_to '削除', board_path(board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか? '},class:'btn btn-danger'
-    .scrollTop
-      = link_to '' do
-        =image_tag 'top-img.png'
+    .scrollTop.d-none.d-md-block.d-lg-block.d-xl-block
+      =image_tag 'top-img.png'
     =paginate @boards
     =javascript_pack_tag 'board'
-    =render 'commons/footer'
+    .footer_siteinfo.w-100.d-none.d-md-block.d-lg-block.d-xl-block
+      =render 'commons/footer'
