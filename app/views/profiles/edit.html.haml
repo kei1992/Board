@@ -18,7 +18,7 @@
     - @profile.errors.full_messages.each do |message|
       %li= message
   %h2.edit-profile-title.py-4.text-info プロフィール編集
-  = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+  = form_with(model: @profile, url: profile_path, method: 'put', local: true, class: "mb-5") do |f|
     %div
       = f.label :avatar, 'プロフィール画像'
     %div

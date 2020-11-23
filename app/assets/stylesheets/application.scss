@@ -12,6 +12,7 @@
 @import 'trix/dist/trix.css';
 @import 'actiontext';
 @import 'footer';
+@import 'notifications';
 
 
 html {
@@ -33,6 +34,7 @@ html {
 
 body {
   height: 100%;
+  width:100%;
   background-color: #F4F8FA;
   font-size: 1em;
   color: $text-base-color;

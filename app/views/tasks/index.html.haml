@@ -60,7 +60,7 @@
 							-# 	=image_tag 'comment-img.png',class:'mr-0'
 		= link_to board_tasks_path do
 			.btn.btn-first.text-white 提案一覧を見る
-		=render 'commons/scrollbtn'
+		=render 'commons/scrollup'
 		=paginate @tasks
 	=javascript_pack_tag 'board'
 	=javascript_pack_tag 'task'
