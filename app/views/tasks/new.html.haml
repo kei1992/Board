@@ -1,8 +1,8 @@
-.container.mt-5
+.container
   %ul
   - @task.errors.full_messages.each do |message|
     %li= message
-  = form_with(model: @task, url: board_tasks_path, method: 'post', local: true) do |f|
+  = form_with(model: @task, url: board_tasks_path, method: 'post', local: true, class: 'mb-5') do |f|
     %div
       = f.label :eyecatch,'アイキャッチ画像'
     %div

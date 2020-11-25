@@ -4,7 +4,7 @@
     %li= message
 
 
-  = form_with(model: @task, url: board_task_path(@board,@task), method: 'put', local: true) do |f|
+  = form_with(model: @task, url: board_task_path(@board,@task), method: 'put', local: true, class: 'mb-5') do |f|
     %div
       = f.label :name,'Eyecatch'
     %di

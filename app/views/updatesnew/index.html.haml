@@ -8,4 +8,4 @@
 			.card_description
 				= update.description
 			.card_image
-				=image_tag update.image if update.image&.attached?
+				=image_tag update.image, class: 'w-100' if update.image&.attached?

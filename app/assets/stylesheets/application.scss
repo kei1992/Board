@@ -45,6 +45,12 @@ a{
   color: $text-base-color;
 }
 
+@media screen and (max-width: 576px) {
+  a{
+    font-size: 15px;
+  }
+}
+
 .container {
   padding: 16px 16px;
   width: 100%;
@@ -71,6 +77,18 @@ h2{
   font-style: normal;
   font-weight: 800;
   font-size: 26px;
+}
+
+@media screen and (max-width: 576px) {
+  h2{
+    font-size: 19px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  h3{
+    font-size: 19px;
+  }
 }
 
 .hidden{

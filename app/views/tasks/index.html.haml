@@ -1,66 +1,61 @@
 .container.mt-5
 	=render 'commons/createboard'
-	=link_to '前のページに戻る',boards_path,class:'btn btn-info my-3'
-	.container-board
-		.row
-			.col-12.col-md-8
-				%h2.text-info.text-center 募集内容
-				= render 'commons/cardcontent',board:@board
-				- if user_signed_in? && current_user.has_written?(@board)
-					.row.board_detail_actions
-						.col-6
-							= link_to '編集', edit_board_path(@board),class:'btn btn-info w-100'
-						.col-6
-							= link_to '削除', board_path(@board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか?', disabled_with:'処理中...'},class:'btn btn-danger w-100'
-			.col-12.mt-4.col-md-4.mt-md-0
-				%h2.text-info.text-center 募集している人
-				.card
-					.row.mb-3.justify-content-center
-						= link_to account_path(@board.user) do
-							= image_tag @board.user.avatar_image,class:'mr-0'
-					.row.justify-content-center
-						- if @board.user.profile.present?
-							%p= @board.user.profile.nickname
-						-else
-							%p Noname
-					.row
-						.col-6.col-md-6
-							%p.text-center.small フォロワー
-							%p.text-center= @board.user.followers.count
-						.col-6.col-md-6
-							%p.text-center.small フォローしている人
-							%p.text-center= @board.user.followings.count
-						.col-12
-							= link_to account_path(@board.user),class:'text-decoration-none text-white' do
-								.btn.btn-info.w-100 プロフィールを確認
-
-	.new_board
-		-unless current_user == @board.user
-			= link_to '提案を作成する', new_board_task_path(@board), class:'btn btn-first'
-		%h2.text-info.text-center.mt-5 過去の提案一覧
-		%p.text-center= "現在の提案数：#{@board.tasks.count}件"
-	.container-task
-		.row
-			-@tasks.limit(4).each do |task|
-				.col-12.col-md-6
-					.card#task-show{data:{board_id: @board.id, task_id: task.id}}
-						=link_to board_task_path(@board,task) do
-							- if task.eyecatch&.attached?
-								= image_tag task.eyecatch, class:'task_eyecatch mb-5'
-							- else
-								= image_tag 'background-default.png',class:'task_eyecatch mb-5'
-						.card_name.d-flex
-							= task.name
-						.card_description
-							= task.description
-						.card_detail.d-flex
-							= image_tag task.user.avatar_image
-							-# .card_btn.ml-auto
-							-# 	%p= task.comment_count
-							-# 	=image_tag 'comment-img.png',class:'mr-0'
-		= link_to board_tasks_path do
-			.btn.btn-first.text-white 提案一覧を見る
-		=render 'commons/scrollup'
-		=paginate @tasks
+	.row.container-board.mb-5
+		.col-12.col-md-8
+			%h2.text-info.text-center 募集内容
+			= render 'commons/cardcontent',board:@board
+			- if user_signed_in? && current_user.has_written?(@board)
+				.row.board_detail_actions
+					.col-6
+						= link_to '編集', edit_board_path(@board),class:'btn btn-info w-100'
+					.col-6
+						= link_to '削除', board_path(@board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか?', disabled_with:'処理中...'},class:'btn btn-danger w-100'
+		.col-12.mt-4.col-md-4.mt-md-0
+			%h2.text-info.text-center.mt-5.mt-md-0 募集している人
+			.card
+				.row.mb-3.justify-content-center
+					= link_to account_path(@board.user) do
+						= image_tag @board.user.avatar_image,class:'mr-0'
+				.row.justify-content-center
+					- if @board.user.profile.present?
+						%p= @board.user.profile.nickname
+					-else
+						%p Noname
+				.row
+					.col-6.col-md-6
+						%p.text-center.small フォロワー
+						%p.text-center= @board.user.followers.count
+					.col-6.col-md-6
+						%p.text-center.small フォロー
+						%p.text-center= @board.user.followings.count
+					.col-12
+						= link_to account_path(@board.user),class:'text-decoration-none text-white' do
+							.btn.btn-info.w-100 プロフィールを確認
+	.row
+		.col-12
+			-unless current_user == @board.user
+				= link_to '提案を作成する', new_board_task_path(@board), class:'btn btn-first'
+			%h2.text-info.text-center.mt-5 過去の提案一覧
+			%p.text-center= "現在の提案数：#{@board.tasks.count}件"
+	.row.mb-5
+		-@tasks.limit(4).each do |task|
+			.col-12.col-md-6
+				.card#task-show{data:{board_id: @board.id, task_id: task.id}}
+					=link_to board_task_path(@board,task) do
+						- if task.eyecatch&.attached?
+							= image_tag task.eyecatch, class:'task_eyecatch mb-5'
+						- else
+							= image_tag 'background-default.png',class:'task_eyecatch mb-5'
+					.card_name.d-flex
+						= task.name
+					.card_description
+						= task.description
+					.card_detail.d-flex
+						= image_tag task.user.avatar_image
+		.col-12
+			= link_to board_tasks_path do
+				.btn.btn-first.text-white 提案一覧を見る
+	=render 'commons/scrollup'
+	=paginate @tasks
 	=javascript_pack_tag 'board'
 	=javascript_pack_tag 'task'

@@ -13,11 +13,11 @@
             %h2.text-info.mt-4.mt-md-5.py-2 募集一覧
         .row.mx-auto.card_row
           .col
-            %h4= "現在の総募集数：#{Board.all.count}件"
+            %p= "現在の総募集数：#{Board.all.count}件"
         .row.mx-auto.mt-4.mb-5
           -if current_page?('/boards')
             .col-3.text-center
-              = link_to '募集一覧',boards_path, class:'text-info'
+              = link_to '一覧',boards_path, class:'text-info'
           .col-3.text-center
             = sort_link(@q, :name, "名前順")
           .col-3.text-center

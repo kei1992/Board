@@ -2,7 +2,7 @@
   %ul
   - @board.errors.full_messages.each do |message|
     %li= message
-  = form_with(model: @board, url: board_path(@board), method: 'put', local: true) do |f|
+  = form_with(model: @board, url: board_path(@board), method: 'put', local: true, class: 'mb-5') do |f|
     %div
       = f.label :name, 'タイトル'
     %div

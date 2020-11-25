@@ -22,7 +22,7 @@ class Admin::UpdatesController < ApplicationController
 
 	private
 	def update_params
-		params.require(:update).permit(:title, :description)
+		params.require(:update).permit(:title, :description, :image)
 	end
 
 	def if_not_admin
