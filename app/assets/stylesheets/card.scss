@@ -24,6 +24,10 @@
     display :flex;
     word-break: break-all;
 
+    @media screen and (max-width: 576px){
+      font-size: 15px;
+    }
+
     .board_detail_actions {
       right: 34px;
       position: absolute;
@@ -46,6 +50,10 @@
     font-size: 20px;
     color: #000000;
     word-wrap: break-word;
+
+    @media screen and (max-width: 576px){
+      font-size: 15px;
+    }
   }
 
   &_created_at{
@@ -99,6 +107,12 @@
 
   &_content {
     padding: 32px 16px;
+  }
+
+  @media screen and (max-width: 576px){
+    &_content {
+      padding:0;
+    }
   }
 }
 

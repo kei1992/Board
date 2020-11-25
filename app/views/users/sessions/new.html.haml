@@ -1,27 +1,35 @@
-.container.mt-5
-  %h2.py-2.text-info ログイン
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field
-      = f.label :Eメール
-      %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email",class:"text"
-    .field
-      = f.label :パスワード
-      %br/
-      = f.password_field :password, autocomplete: "current-password",class:"text"
-    .actions
-      = f.submit "Emailでログイン",class:"text",class:"btn btn-first mt-2" do
-        %i.fa.fa-envelope
-  %h2.py-2.text-info SNSでログイン
-  %p.form_explanation
-    .row.mt-5
-      .col-6
-        = link_to user_facebook_omniauth_authorize_path,class:"btn btn-primary w-100 py-3" do
-          %i.fa.fa-facebook-square.company_mark
-            Facebookでログイン
-      .col-6.mb-5
-        = link_to user_google_oauth2_omniauth_authorize_path,class:"btn btn-danger w-100 py-3" do
-          %i.fa.fa-google.company_mark
-            Googleでログイン
-  %h2.text-info その他のオプション
-  = render "users/shared/links"
+.container
+  .row
+    .col-12
+      %h2.py-2.text-info ログイン
+  .row
+    .col-12
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.label :Eメール
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email",class:"text"
+        .field
+          = f.label :パスワード
+          %br/
+          = f.password_field :password, autocomplete: "current-password",class:"text"
+        .actions
+          = f.submit "Emailでログイン",class:"text",class:"btn btn-first mt-2" do
+            %i.fa.fa-envelope
+  .row
+    .col-12
+      %h2.py-2.text-info SNSでログイン
+      %p.form_explanation
+        .row.mt-5
+          .col-12.mb-3.col-md-6.mb-md-0
+            = link_to user_facebook_omniauth_authorize_path,class:"btn btn-primary d-flex justify-content-center align-items-center py-3" do
+              %i.fa.fa-facebook-square.company_mark
+              %p.mb-0 Facebook
+          .col-12.col-md-6.mb-5
+            = link_to user_google_oauth2_omniauth_authorize_path,class:"btn btn-danger d-flex justify-content-center align-items-center py-3" do
+              %i.fa.fa-google.company_mark
+              %p.mb-0 Google
+  .row.mb-5
+    .col-12
+      %h2.text-info その他のオプション
+      = render "users/shared/links"

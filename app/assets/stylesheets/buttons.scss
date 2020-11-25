@@ -1,5 +1,11 @@
 @import './variables';
 
+@media screen and (max-width: 576px) {
+    .btn{
+        font-size: 15px;
+    }
+}
+
 .btn-first{
     border: none;
     border-radius:5px;
@@ -15,6 +21,10 @@
     font-weight: 800;
     font-size: 18px;
     cursor:pointer;
+
+    @media screen and (max-width: 576px) {
+        font-size: 15px;
+    }
 }
 
 .btn-secondary {
