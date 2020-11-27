@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        @boards = Board.all.page(params[:page]).per(8)
+        @boards = Board.all.includes(:users).page(params[:page]).per(8)
         @q = Board.ransack(params[:q])
         @boards = @q.result(distinct: true).page(params[:page]).per(8)
         if params[:tag_name]

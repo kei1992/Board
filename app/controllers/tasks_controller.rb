@@ -21,9 +21,8 @@ class TasksController < ApplicationController
       @task = @board.tasks.build(task_params)
 
       if @task.save
-        redirect_to board_tasks_path(@board), notice: 'Completed Upload'
+        redirect_to board_tasks_path(@board)
       else
-        flash.now[:error] = 'Failed Upload'
         render :new
       end
     end
