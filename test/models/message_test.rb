@@ -1,8 +1,9 @@
 # == Schema Information
 #
-# Table name: entries
+# Table name: messages
 #
 #  id         :bigint           not null, primary key
+#  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  room_id    :bigint           not null
@@ -10,8 +11,8 @@
 #
 # Indexes
 #
-#  index_entries_on_room_id  (room_id)
-#  index_entries_on_user_id  (user_id)
+#  index_messages_on_room_id  (room_id)
+#  index_messages_on_user_id  (user_id)
 #
 # Foreign Keys
 #
@@ -20,7 +21,7 @@
 #
 require 'test_helper'
 
-class EntryTest < ActiveSupport::TestCase
+class MessageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

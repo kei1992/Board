@@ -1,4 +1,18 @@
 .container.mt-5
+	%h2.text-info DM
+	-if @user.profile.present?
+		-if @user.has_followed?(current_user)
+			- unless @user.id == current_user.id
+				- if @isRoom == true
+					%p
+						= link_to 'チャットへ', room_path(@roomId)
+				- else
+					= form_for @room do |f|
+						= fields_for @entry do |e|
+							= e.hidden_field :user_id, :value=> @user.id
+						= f.submit "チャットを始める",class:'btn-first'
+	= link_to "ユーザー一覧に戻る", users_path
+
 	%h2.mt-3.text-info プロフィール
 	.profile.mt-3.bg-white.p-3
 		.profile_info
