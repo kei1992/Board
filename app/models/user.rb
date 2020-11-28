@@ -24,13 +24,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :sns_credentials, dependent: :destroy
-  # deviceの機能を拡張
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable,:validatable, :omniauthable
 
   has_many :updates,dependent: :destroy
-
-
   has_many :boards, dependent: :destroy
   has_many :tasks, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -38,7 +35,6 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_many :bookmarks,dependent: :destroy
-  has_many :my_bookmarks, through: :bookmarks, source: :board
 
   has_many :following_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :followings, through: :following_relationships, source: :following
@@ -46,10 +42,8 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships, source: :follower
 
   has_one :profile, dependent: :destroy
-
-  has_many :entries
-  has_many :direct_messages
-  has_many :rooms, through: :entries
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|

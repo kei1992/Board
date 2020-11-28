@@ -23,6 +23,7 @@
             %p.header_page_search_title.mb-0.px-2.py-2.text-info.text-left.font-weight-bold 募集一覧から探す
 
         - if user_signed_in?
+          %i.fa.fa-cog.fa-3x.text-info.btn.d-block.d-sm-none.modal-btn
           .header-function.ml-auto.mr-2.order-lg-2.align-items-center.d-flex
             = link_to notifications_path, class:'text-decoration-none' do
               - if unchecked_notifications.any?
@@ -31,14 +32,13 @@
                   %i.fa.fa-circle.n-circle.fa-stack-1x.text-warning.pl-3
               - else
                 %i.fa.fa-bell.fa-2x.text-info.d-none.d-sm-block.d-md-block.d-lg-block
-
+          = link_to users_index_path do
+            %i.fa.fa-envelope.fa-2x.ml-3.text-info.d-none.d-sm-block.d-md-block.d-lg-block
           .dropdown-header.pr-0.order-lg-3
             .dropdown-header-hidden-parent.d-flex
               .dropdown-header-hidden.d-flex.align-items-center
                 = image_tag current_user.avatar_image, class: 'header_avatar dropbtn mr-3'
               .btn.btn-info.modal-btn.d-none.d-sm-block.d-md-block.d-lg-block.ml-4 機能を使う
-              %i.fa.fa-cog.fa-3x.text-info.btn.d-block.d-sm-none.modal-btn
-
             .modal-background.px-3
               .modal
                 .row

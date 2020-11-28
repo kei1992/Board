@@ -1,4 +1,10 @@
-.container
-	%h3 ユーザ一覧
-	- @users.each do |user|
-		= link_to "ユーザ名：#{user.email}", user_path(user.id)
+.container.mt-5
+  %h2.text-info ユーザー一覧
+  %h3
+  - @users.each do |u|
+    %p
+      = link_to account_path(u.id) do
+        - if u.profile.present?
+          = u.profile.nickname
+        -else
+          Noname
