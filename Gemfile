@@ -36,6 +36,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'sprockets', '~> 3.7.2'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'react_on_rails'
+gem 'ransack'
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
@@ -71,3 +74,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby
+gem 'devise-i18n'
+gem 'devise-i18n-views'

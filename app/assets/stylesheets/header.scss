@@ -19,6 +19,12 @@ $header-padding-y: 16px;
     font-family: Avenir;
   }
 
+  &_page_search_title{
+    background-color: #F4F8FA;
+    border-radius:5px;
+    width:100%;
+  }
+
   &_avatar {
     width: $avatar-size;
     height: $avatar-size;
@@ -26,6 +32,11 @@ $header-padding-y: 16px;
   }
 }
 
+@media screen and (max-width: 767px) {
+  .userProfileEmail{
+    display:none;
+  }
+}
 .dropbtn {
   border: none;
 }
@@ -60,29 +71,6 @@ $header-padding-y: 16px;
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-.header_bookmark{
-  display:flex;
-  position:relative;
-  color:#f0beba;
-  &:hover{
-    opacity:0.8;
-  }
-
-  &_number{
-    background:#F89174;
-    text-align:center;
-    color:white;
-    font-size: 10px;
-    display:inline-block;
-    width:35px;
-    height:15px;
-    border-radius:8px;
-    position:absolute;
-    top:0px;
-    left:40%;
-  }
 }
 
 .header_bell{

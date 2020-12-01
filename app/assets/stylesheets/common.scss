@@ -46,13 +46,6 @@
     display: block;
   }
 
-
-  .dropdown-header {
-    position: relative;
-    display: inline-block;
-    cursor:pointer;
-  }
-
   .dropdown-content-header {
     font-weight: normal;
     display: none;
@@ -88,4 +81,8 @@
 
   .dropdown-header:hover .dropdown-content-header {
     display: block;
+  }
+
+  .scrollTop{
+    cursor:pointer;
   }

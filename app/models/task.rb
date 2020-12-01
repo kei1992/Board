@@ -3,7 +3,6 @@
 # Table name: tasks
 #
 #  id         :bigint           not null, primary key
-#  deadline   :date
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -26,7 +25,7 @@ class Task < ApplicationRecord
     belongs_to :user
     belongs_to :board
     has_many :comments, dependent: :destroy
-    has_many :archives, dependent: :destroy
+    has_many :notofications, dependent: :destroy
     has_one_attached :eyecatch
     has_rich_text :description
 

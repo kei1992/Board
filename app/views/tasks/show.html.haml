@@ -1,7 +1,7 @@
-.container
+.container.mt-5
   =render 'commons/createboard'
-  =link_to '<< Back',:back,class:'btn btn-info'
-  .task#task-show{data:{board_id: @board.id, task_id: @task.id}}
+  =link_to '前のページに戻る',:back,class:'btn btn-info'
+  .task#task-show{data:{user_id: current_user.id, user_nickname: current_user.profile.nickname, board_id: @board.id, task_id: @task.id}}
     .task_title
       %h2.task_name= @task.name
       - if user_signed_in? && current_user.has_written_task?(@board,@task)
@@ -9,8 +9,8 @@
           .dropdown
             = image_tag 'actions.svg',class:'dropbtn'
             .dropdown-content.mini
-              = link_to 'Edit', edit_board_task_path(@board,@task)
-              = link_to 'Delete', board_task_path(@board,@task), data:{method:'delete',confirm:'Are you sure you want to destroy?'}
+              = link_to '編集', edit_board_task_path(@board,@task)
+              = link_to '削除', board_task_path(@board,@task), data:{method:'delete',confirm:'本当に削除してよろしいですか？'}
     - if @task.eyecatch&.attached?
       = image_tag @task.eyecatch, class:'task_eyecatch'
     - else
@@ -19,26 +19,16 @@
       .card_content
         .card_description
           = @task.description
-        .card_deadline
-          %p.card_deadline_text Deadline
-          -if @task.deadline.present?
-            %p= @task.deadline
-          -else
-            %p Unknown
-
-  %h2.task_comment Comment
+  %h2.task_comment コメント一覧
   .comment-container
 
-
-  .new_board
+  .new_board.mb-5
     .btn.btn-first.show-comment-form
-      %i.fa.fa-plus
-      %p Add new comment
+      %p.mb-0 コメント追加
     .comment-text-area.hidden
       =text_area_tag :comment_content, '', class:'sm'
     .btn.btn-first.add-comment-button.hidden
-      %i.fa.fa-plus
-      %p Add new comment
+      %p.mb-0 コメント追加
 
 =javascript_pack_tag 'task'
 =javascript_pack_tag 'board'

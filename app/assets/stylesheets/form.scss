@@ -105,3 +105,13 @@ input, select {
   .form_explanation{
     margin-bottom:10px;
   }
+
+  #q_name_cont{
+    border: 1px solid #EBEBEB;
+  }
+
+  @media screen and (max-width:768px){
+    #q_name_cont{
+      width:100%;
+    }
+  }

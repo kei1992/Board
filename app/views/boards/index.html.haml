@@ -1,24 +1,60 @@
 .container
   =render 'commons/createboard'
-  .container-board
-    %h2.text-info All Board
-    .row.mx-auto.card_row
-      - @boards.each do |board|
-        .card.col-12.col-md-5.mx-auto
-          .card_content
-            .card_name
-              = board.name
-            .card_description
-              = board.description
-            .card_readmore
-              =link_to board_tasks_path(board) do
-                %p Read More >>
-            .card_detail
-              = image_tag board.user.avatar_image
-            - if user_signed_in? && current_user.has_written?(board)
-              .board_detail_actions.mt-1
-                = link_to 'Edit', edit_board_path(board),class:'btn btn-info'
-                = link_to 'Delete', board_path(board), data: {method: 'delete', confirm: 'Are you sure you want to destroy? '},class:'btn btn-danger'
+  .row
+    .col-12.col-md-5
+      .row.container-find-parts
+        .col-12
+          =render 'commons/sidebar'
+    .col-12.col-md-7
+      .row.container-board.mx-auto
+        .col
+          %h2.text-info.mt-4.mt-md-5.py-2 募集一覧
+      .row.mx-auto.card_row
+        .col
+          %p= "現在の総募集数：#{Board.all.count}件"
+      .row.mx-auto.mt-4.mb-5
+        -if current_page?('/boards')
+          .col-3.text-center
+            = link_to '一覧',boards_path, class:'text-info'
+        .col-3.text-center
+          = sort_link(@q, :name, "名前順")
+        .col-3.text-center
+          = sort_link(@q, :created_at, "投稿日")
+        .col-3.text-center
+          = sort_link(@q, :updated_at, "更新日")
+        .col-12.mb-5
+          - @boards.each do |board|
+            .card
+              .card_content
+                .card_taglist
+                  =render 'commons/tag_list',tag_list: board.tag_list
+                .card_name
+                  = board.name.truncate(25)
+                .card_description
+                  = truncate(strip_tags(board.content.to_s),length: 100)
+                .card_readmore.d-flex
+                  =link_to board_tasks_path(board),class:'text-decoration-none' do
+                    %p.text-info 募集を詳しく見る >>
+                  .card_favorite.ml-auto
+                    -if user_signed_in?
+                      = react_component("Favorite", props: { boardId: board.id, favoriteId: board.favorite_by(current_user)&.id }, prerender: false)
+                .card_created_at.d-flex
+                  %p 投稿日：
+                  = board.created_at.to_s(:datetime_jp)
+                .card_updated_at.d-flex
+                  %p 更新日：
+                  = board.updated_at.to_s(:datetime_jp)
+
+                .card_detail.d-flex
+                  = link_to account_path(board.user) do
+                    = image_tag board.user.avatar_image
+                  - if user_signed_in? && current_user.has_written?(board)
+                    .board_detail_actions.ml-auto
+                      = link_to '編集', edit_board_path(board),class:'btn btn-info'
+                      = link_to '削除', board_path(board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか? '},class:'btn btn-danger'
+    =render 'commons/scrollup'
     =paginate @boards
+    = render 'commons/dmbutton'
+    .footer_siteinfo.w-100.d-none.d-md-block.d-lg-block.d-xl-block
+      =render 'commons/footer'
     =javascript_pack_tag 'board'
-    =render 'commons/footer'

@@ -4,7 +4,7 @@
 #
 #  id           :bigint           not null, primary key
 #  introduction :text
-#  nickname     :string
+#  nickname     :string           default("Noname")
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :bigint           not null
@@ -17,4 +17,7 @@ class Profile < ApplicationRecord
     belongs_to :user
     has_many :boards, through: :users
     has_one_attached :avatar
+
+    validates :nickname, presence: true, length: {maximum: 15}
+    validates :introduction, presence: true, length: { maximum: 100 }
 end

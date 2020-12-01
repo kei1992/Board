@@ -9,10 +9,13 @@
 @import 'common';
 @import 'comment';
 @import 'profile';
-@import 'actiontext';
 @import 'trix/dist/trix.css';
+@import 'actiontext';
 @import 'footer';
-
+@import 'notifications';
+@import 'messages';
+@import 'modal';
+@import 'users';
 
 html {
   word-spacing: 1px;
@@ -33,6 +36,7 @@ html {
 
 body {
   height: 100%;
+  width:100%;
   background-color: #F4F8FA;
   font-size: 1em;
   color: $text-base-color;
@@ -43,11 +47,10 @@ a{
   color: $text-base-color;
 }
 
-.container {
-  padding: 16px 16px;
-  width: 100%;
-  height:100%;
-  position:relative;
+@media screen and (max-width: 576px) {
+  a{
+    font-size: 15px;
+  }
 }
 
 i {
@@ -69,6 +72,18 @@ h2{
   font-style: normal;
   font-weight: 800;
   font-size: 26px;
+}
+
+@media screen and (max-width: 576px) {
+  h2{
+    font-size: 19px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  h3{
+    font-size: 19px;
+  }
 }
 
 .hidden{
@@ -95,36 +110,6 @@ nav{
   width:100%;
 }
 
-.modal{
-  position: relative;
-  background-color:rgb(244,244,244);
-  border-radius: 4px;
-  width: 100%;
-
-}
-
-.modal-children-background{
-  background-color: white;
-  height:150px;
-  width:150px;
-  margin-bottom:30px;
-  border-radius: 20px;
-  position:relative;
-
-}
-
-.modal-siblings{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform : translate(-50%,-50%);
-}
-
-.modal-text{
-  font-size: 25px;
-  font-weight: bold;
-}
-
 .hidden_btn{
   position:absolute;
   top:5px;
@@ -143,4 +128,20 @@ nav{
 
 .page-item.active .page-link {
   background: #18A2B8;
+}
+
+.scrollTop{
+  position:fixed;
+  bottom:30px;
+  right:20px;
+}
+
+.tag-list-design{
+  font-size:12px;
+  font-weight:bold;
+  padding:0;
+}
+
+.registration-title,.edit-profile-title{
+  margin-top:50px;
 }

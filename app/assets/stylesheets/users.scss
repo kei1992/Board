@@ -1,0 +1,25 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.user-all-info{
+	height:100%;
+}
+
+.avatar-image-sm{
+	height:50px;
+	width:50px;
+}
+
+@media screen and (max-width: 576px) {
+	.avatar-image-sm{
+		height:30px;
+		width:30px;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.user-follow-button{
+		font-size:10px;
+	}
+}

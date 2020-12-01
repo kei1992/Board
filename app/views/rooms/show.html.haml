@@ -1,0 +1,48 @@
+.container.mb-5
+  %h2.text-info DM
+  - @entries.each do |e|
+    %h5
+      %strong
+        参加者：
+        %a{:href => "/users/#{e.user.id}"}
+          - if e.user.profile.nickname.present?
+            = e.user.profile.nickname
+            さん
+          - else
+            Nonameさん
+  = link_to "ユーザーの一覧に戻る", users_path
+  %hr/
+  .message-container-parent.bg-white.p-3.mb-5
+    - if @messages.present?
+      - @messages.each do |m|
+        - if m.user == current_user
+          .message-container.d-flex.mb-3
+            .message-user-info
+              = image_tag m.user.avatar_image, class:'message-profile-image mr-1'
+              .message-container-children
+              %a{:href => "/users/#{m.user_id}"}
+              - if m.user.profile.nickname.present?
+                = m.user.profile.nickname
+              - else
+                Noname
+            %p.mb-0.message-says.mx-2= m.content
+        - else
+          .message-container-reverse.d-flex.mb-3
+            .message-user-info
+              = image_tag m.user.avatar_image, class:'message-profile-image mr-1'
+              .message-container-children
+              %a{:href => "/users/#{m.user_id}"}
+              - if m.user.profile.nickname.present?
+                = m.user.profile.nickname
+              - else
+                Noname
+            %p.mb-0.message-says.mx-2= m.content
+    - else
+      %p.text-info.text-center メッセージはまだありません
+    = form_for @message do |f|
+      .row.align-items-center
+        .col-12.col-md-9
+          = f.text_field :content, :placeholder => "メッセージを入力して下さい", class:'text mb-3 mb-md-0'
+          = f.hidden_field :room_id, :value => @room.id
+        .col-12.col-md-3.mb-5.mb-md-0
+          = f.submit "送信", class:'btn-first m-0'

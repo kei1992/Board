@@ -1,19 +1,34 @@
+-if request.referer&.include?('/users')
+  .container-fluid
+    .row.bg-white
+      .col-4.text-center.text-info.font-weight-bold
+        %p.pt-4 ステップ①
+        %p Eメールの登録
+      .col-4.text-center
+        %i.fa.fa-angle-double-right.fa-4x.pt-4.text-warning
+      .col-4.text-center.text-info.font-weight-bold
+        %p.pt-4 ステップ②
+        %p プロフィールの登録
+-if user_signed_in?&&@profile.nickname == 'Nickname'
+  .edit-profile-title.mt-0
+    .row.bg-white.justify-content-center
+      %p.pt-4.text-warning.font-weight-bold.lg プロフィールを充実させるとマッチングしやすくなります。
 .container
   %ul
     - @profile.errors.full_messages.each do |message|
       %li= message
-
-  = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+  %h2.edit-profile-title.py-4.text-info プロフィール編集
+  = form_with(model: @profile, url: profile_path, method: 'put', local: true, class: "mb-5") do |f|
     %div
-      = f.label :avatar, 'Profile Image'
+      = f.label :avatar, 'プロフィール画像'
     %div
       = f.file_field :avatar, class:'text'
     %div
-      = f.label :nickname, 'Nickname'
+      = f.label :nickname, 'ニックネーム'
     %div
       = f.text_field :nickname, class: 'text'
     %div
-      = f.label :introduction, 'Introduction'
+      = f.label :introduction, '自己紹介'
     %div
-      = f.text_area :introduction
-    = f.submit 'Submit', class: 'btn btn-first'
+      = f.text_area :introduction,class:'sm'
+    = f.submit '編集を完了する', class: 'btn btn-first'

@@ -1,11 +1,12 @@
 .container.mt-5
-  %h2.mt-3 Forgot your password?
+  %h2.py-2 パスワードをリセットする
   = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
     = render "users/shared/error_messages", resource: resource
     .field
-      = f.label :email
+      = f.label :Eメール
       %br/
       = f.email_field :email, autofocus: true, autocomplete: "email",class:"text"
     .actions
-      = f.submit "Reset password",class:"btn btn-first mt-0"
+      = f.submit "Reset password",class:"btn btn-first mt-2"
+  %h2.py-2 その他のオプション
   = render "users/shared/links"

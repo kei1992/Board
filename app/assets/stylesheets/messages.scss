@@ -1,0 +1,21 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.message-container-reverse{
+  flex-direction: row-reverse;
+}
+
+.message-says,.message-says-reverse{
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+	background: #F4F8FA;
+}
+
+.message-profile-image{
+	height:30px;
+	width:30px;
+}

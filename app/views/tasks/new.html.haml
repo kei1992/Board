@@ -2,23 +2,17 @@
   %ul
   - @task.errors.full_messages.each do |message|
     %li= message
-
-
-  = form_with(model: @task, url: board_tasks_path, method: 'post', local: true) do |f|
+  = form_with(model: @task, url: board_tasks_path, method: 'post', local: true, class: 'mb-5') do |f|
     %div
-      = f.label :eyecatch,'Eyecatch'
+      = f.label :eyecatch,'アイキャッチ画像'
     %div
       = f.file_field :eyecatch,class:'text'
     %div
-      = f.label :name, 'Name'
+      = f.label :name, 'タイトル'
     %div
       = f.text_field :name, class: 'text'
     %div
-      = f.label :description, 'Description'
+      = f.label :description, 'メッセージ内容'
     %div
       = f.rich_text_area :description
-    %div
-      = f.label :deadline, 'Deadline'
-    %div
-      = f.date_field :deadline, class:'text'
-    = f.submit 'Submit', class: 'btn-first'
+    = f.submit '提案する',data:{confirm:'提案を完了しても良いですか？',disable_with:'処理中...'} ,class: 'btn-first'

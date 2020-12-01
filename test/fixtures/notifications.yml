@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id         :bigint           not null, primary key
+#  action     :string           default(""), not null
+#  checked    :boolean          default(FALSE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  board_id   :integer
+#  comment_id :integer
+#  task_id    :integer
+#  visited_id :integer
+#  visitor_id :integer
+#
+# Indexes
+#
+#  index_notifications_on_board_id    (board_id)
+#  index_notifications_on_comment_id  (comment_id)
+#  index_notifications_on_task_id     (task_id)
+#  index_notifications_on_visited_id  (visited_id)
+#  index_notifications_on_visitor_id  (visitor_id)
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

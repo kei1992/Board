@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import axios from 'axios'
+import { useImperativeHandle } from 'react'
 
 const { default: Axios } = require("axios")
 
@@ -15,6 +16,7 @@ const appendNewComment = (comment) => {
 	$('.comment-container').append(
 		`<div class="task_comment">
 			<p>${comment.description}</p>
+			<p>${comment.user_nickname}</p>
 		</div>`
 	)
 }
@@ -23,11 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const dataset_task = $(`#task-show`).data()
 	const boardId = dataset_task.boardId
 	const taskId = dataset_task.taskId
-
-	axios.get(`/boards/${boardId}/tasks/${taskId}/archive`)
-		.then((response)=>{
-			console.log(response)
-	})
+	const userId = dataset_task.userId
+	const userNickname = dataset_task.userNickname
 
 	axios.get(`/boards/${boardId}/tasks/${taskId}/comments`)
 		.then((response) => {
@@ -46,10 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!content) {
 			window.alert('コメントを入力してください')
 		} else {
-			axios.post(`/boards/${boardId}/tasks/${taskId}/comments`, { comment: { description: content } })
+			axios.post(`/boards/${boardId}/tasks/${taskId}/comments`, { comment: { user_id: userId, user_nickname: userNickname, description: content } })
 				.then((res) => {
-					debugger
 					const comment = res.data
+					comment.user_id = userId
+					comment.user_nickname = userNickname
 					appendNewComment(comment)
 					$('#comment_content').val('')
 				})

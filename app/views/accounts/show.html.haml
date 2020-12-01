@@ -1,0 +1,51 @@
+.container.mb-5.pb-5
+	%h2.mt-3.text-info プロフィール
+	.profile.mt-3.bg-white.p-3
+		.profile_info
+		= image_tag @user.avatar_image,class:'header_avatar'
+		- if @user == current_user
+			= link_to 'プロフィールを編集',edit_profile_path, class:'btn btn-first'
+		-else
+			-if current_user.has_followed?(@user)
+				= link_to account_unfollows_path(@user),data:{method: 'post'},class:'ml-5 btn-user-unfollow btn btn-info' do
+					%p.mb-0.user-follow-button.mb-0 フォロー解除
+			-else
+				= link_to account_follows_path(@user),data:{method: 'post'},class:'ml-5 btn-user-follow btn btn-info' do
+					%p.mb-0.user-follow-button.mb-0 フォロー
+			-if @user.profile.present?
+				%h3.mt-2.font-weight-bold= @user.profile.nickname
+				%p.mt-2= @user.profile.introduction
+			-else
+				%h3.mt-2.font-weight-bold ニックネームが未設定
+				%p.mt-2 自己紹介が未設定
+	%hr
+	%h2.py-3.text-info DM
+	%p.text-info ＊相互フォローの場合のみ、メッセージを送信できます。
+	-if @user.profile.present?
+		-if @user.has_followed?(current_user)
+			- unless @user.id == current_user.id
+				- if @isRoom == true
+					%p
+						= link_to 'チャットへ', room_path(@roomId)
+				- else
+					= form_for @room do |f|
+						= fields_for @entry do |e|
+							= e.hidden_field :user_id, :value=> @user.id
+						= f.submit "チャットを始める",class:'btn-first'
+	= link_to "ユーザー一覧に戻る", users_path
+	%hr
+	.container-board
+		%h2.mt-3.text-info 募集一覧
+		.row.mx-auto.card_row
+			- if @user.boards.present?
+				- @user.boards.each do |board|
+					.card.col-12.mx-auto
+						.card_content
+							.card_name
+								= board.name
+							.card_description
+								= board.content
+							.card_taglist
+								=render 'commons/tag_list',tag_list: board.tag_list
+			- else
+				%p まだ募集がありません
