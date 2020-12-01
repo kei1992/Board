@@ -1,10 +1,31 @@
-.container.mt-5
-  %h2.text-info ユーザー一覧
-  %h3
+.container.mb-5.pb-5
+  %h2.mt-3.pt-3.text-info ユーザー
   - @users.each do |u|
-    %p
-      = link_to account_path(u.id) do
-        - if u.profile.present?
-          = u.profile.nickname
-        -else
-          Noname
+    .row
+      - if u.has_followed?(current_user)
+        %p.px-3.text-info.font-weight-bold フォローされています。
+    .row.p-2
+      .col-2
+        = link_to account_path(u) do
+          =image_tag u.avatar_image, class:'avatar-image-sm mr-2'
+      .col-10
+        .row.mb-2
+          %p.mr-auto
+            - if u.profile.present?
+              = link_to account_path(u.id) do
+                = u.profile.nickname.truncate(15)
+            -else
+              未設定
+          - if u.has_followed?(current_user)
+            = link_to account_unfollows_path(u),data:{method: 'post'},class:'btn-user-unfollow btn btn-info' do
+              %p.mb-0.user-follow-button.mb-0 フォロー中
+          - else
+            = link_to account_follows_path(u),data:{method: 'post'},class:'btn-user-follow btn btn-info' do
+              %p.mb-0.user-follow-button.mb-0 フォローする
+        .row
+          %p
+            - if u.profile.present?
+              = u.profile.introduction.truncate(15)
+            - else
+              未設定
+    %hr

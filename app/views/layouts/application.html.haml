@@ -21,9 +21,8 @@
           = link_to boards_path, class:'text-decoration-none d-flex align-items-center bg-white px-2 py-3' do
             %i.fa.fa-search.fa-2x.text-info
             %p.header_page_search_title.mb-0.px-2.py-2.text-info.text-left.font-weight-bold 募集一覧から探す
-
+          -# 通知機能
         - if user_signed_in?
-          %i.fa.fa-cog.fa-3x.text-info.btn.d-block.d-sm-none.modal-btn
           .header-function.ml-auto.mr-2.order-lg-2.align-items-center.d-flex
             = link_to notifications_path, class:'text-decoration-none' do
               - if unchecked_notifications.any?
@@ -32,13 +31,16 @@
                   %i.fa.fa-circle.n-circle.fa-stack-1x.text-warning.pl-3
               - else
                 %i.fa.fa-bell.fa-2x.text-info.d-none.d-sm-block.d-md-block.d-lg-block
-          = link_to users_index_path do
+          -# DM機能(スマホ以外)
+          = link_to users_index_path, class:'order-lg-3' do
             %i.fa.fa-envelope.fa-2x.ml-3.text-info.d-none.d-sm-block.d-md-block.d-lg-block
-          .dropdown-header.pr-0.order-lg-3
+          .dropdown-header.pr-0.order-lg-4
             .dropdown-header-hidden-parent.d-flex
               .dropdown-header-hidden.d-flex.align-items-center
                 = image_tag current_user.avatar_image, class: 'header_avatar dropbtn mr-3'
               .btn.btn-info.modal-btn.d-none.d-sm-block.d-md-block.d-lg-block.ml-4 機能を使う
+              %i.fa.fa-bars.fa-2x.text-info.btn.d-block.d-sm-none.modal-btn
+            -# モーダル
             .modal-background.px-3
               .modal
                 .row
@@ -48,26 +50,26 @@
                     .modal-siblings.modal-note
                       = link_to new_board_path, class:'text-decoration-none' do
                         = image_tag 'note.png'
-                        %p.modal-text.small 募集を作成
+                        %p.mb-0.modal-text 募集を作成
 
                   .col-12.col-md-3.modal-children-people.modal-children-background.mx-auto
                     =link_to edit_profile_path do
                       .modal-siblings
                         =image_tag 'people.png'
-                        %p.modal-text プロフィール
+                        %p.mb-0.modal-text プロフィール
 
                   .col-12.col-md-3.modal-children-logout.modal-children-background.mx-auto
                     =link_to destroy_user_session_path, data: { method: 'delete' } do
                       .modal-siblings
                         =image_tag 'logout.png'
-                        %p.modal-text ログアウト
+                        %p.mb-0.modal-text ログアウト
         -else
           .col-8.col-md-4.ml-auto.col-lg-4.order-1.order-lg-2.text-right.header_pagelogin
             = link_to new_user_session_path do
               .btn.btn-info.btn-sm.font-weight-bold ログイン
             = link_to users_guest_sign_in_path, method: :post do
               .btn.btn-warning.btn-sm.text-white.font-weight-bold ゲストログイン
-
+        -# フッター（スマホ用）
         .footer-sm.fixed-bottom.bg-white.py-3.d-flex.justify-content-center.justify-content-around.d-block.d-sm-none
           .footer-sm-children
             = link_to boards_path do

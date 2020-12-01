@@ -37,6 +37,18 @@
     font-weight: bold;
 }
 
+.btn-user-follow{
+    background-color: #F4F8FA;
+    color:grey;
+    border: 1px solid grey;
+}
+
+@media screen and (max-width: 576px){
+    .btn-user-unfollow,.btn-user-follow{
+        height:30px;
+    }
+}
+
 @media screen and (max-width: 768px){
     .btn-find-word{
         width:100%;

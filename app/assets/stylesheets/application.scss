@@ -14,7 +14,8 @@
 @import 'footer';
 @import 'notifications';
 @import 'messages';
-
+@import 'modal';
+@import 'users';
 
 html {
   word-spacing: 1px;
@@ -50,13 +51,6 @@ a{
   a{
     font-size: 15px;
   }
-}
-
-.container {
-  padding: 16px 16px;
-  width: 100%;
-  height:100%;
-  position:relative;
 }
 
 i {
@@ -114,36 +108,6 @@ nav{
   text-align: center;
   display: none;
   width:100%;
-}
-
-.modal{
-  position: relative;
-  background-color:rgb(244,244,244);
-  border-radius: 4px;
-  width: 100%;
-
-}
-
-.modal-children-background{
-  background-color: white;
-  height:150px;
-  width:150px;
-  margin-bottom:30px;
-  border-radius: 20px;
-  position:relative;
-
-}
-
-.modal-siblings{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform : translate(-50%,-50%);
-}
-
-.modal-text{
-  font-size: 25px;
-  font-weight: bold;
 }
 
 .hidden_btn{

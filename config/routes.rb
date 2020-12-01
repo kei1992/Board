@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :updates, only:[:new,:create]
   end
-  resources :favorites, only:[:show, :create, :destroy]
+  resources :favorites, only:[:show, :create, :deresourcesstroy]
   resources :notifications, only:[:index]
   resources :boards, only:[:index,:new, :create,:edit,:update, :destroy] do
     resources :tasks do
