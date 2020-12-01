@@ -1,3 +1,19 @@
 .footer{
 	border-top: 1px solid grey;
 }
+
+
+.footer-dm-button{
+	display:none;
+}
+
+@media screen and (max-width:576px){
+	.footer-dm-button{
+		display:block;
+		position:fixed;
+		bottom:80px;
+		right:30px;
+		cursor:pointer;
+		z-index:1000;
+	}
+}

@@ -25,14 +25,6 @@ import $ from 'jquery'
 
 $(function () {
 	const pageTop = $('.scrollTop')
-	pageTop.hide()
-	$(window).scroll(function () {
-		if ($(this).scrollTop() > 100) {
-			pageTop.fadeIn()
-		} else {
-			pageTop.fadeOut()
-		}
-	})
 	pageTop.click(function () {
 		$('body,html').animate({ scrollTop: 0 }, 500)
 	})

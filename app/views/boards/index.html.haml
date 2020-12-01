@@ -54,6 +54,7 @@
                       = link_to '削除', board_path(board), data: {method: 'delete', confirm: '本当に削除してもよろしいですか? '},class:'btn btn-danger'
     =render 'commons/scrollup'
     =paginate @boards
-    =javascript_pack_tag 'board'
+    = render 'commons/dmbutton'
     .footer_siteinfo.w-100.d-none.d-md-block.d-lg-block.d-xl-block
       =render 'commons/footer'
+    =javascript_pack_tag 'board'
