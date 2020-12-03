@@ -1,15 +1,5 @@
 .container.mb-5
-  %h2.text-info DM
-  - @entries.each do |e|
-    %h5
-      %strong
-        参加者：
-        %a{:href => "/users/#{e.user.id}"}
-          - if e.user.profile.nickname.present?
-            = e.user.profile.nickname
-            さん
-          - else
-            Nonameさん
+  %h2.py-3.text-info DM
   = link_to "ユーザーの一覧に戻る", users_path
   %hr/
   .message-container-parent.bg-white.p-3.mb-5

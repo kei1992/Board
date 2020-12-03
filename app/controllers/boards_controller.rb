@@ -9,10 +9,15 @@ class BoardsController < ApplicationController
         if params[:tag_name]
             @boards = Board.tagged_with("#{params[:tag_name]}").page(params[:page]).per(12)
         end
+        @category_parents = Category.where(ancestry: nil)
     end
 
     def new
         @board = current_user.boards.build
+        @category_parent_array = ['---']
+        Category.where(ancestry: nil).each do |parent|
+            @category_parent_array << parent.name
+        end
     end
 
     def create
@@ -47,5 +52,9 @@ class BoardsController < ApplicationController
     private
     def board_params
         params.require(:board).permit(:name, :content, :tag_list)
+    end
+
+    def set_categories
+
     end
 end

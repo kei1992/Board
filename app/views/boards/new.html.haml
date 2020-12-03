@@ -13,6 +13,8 @@
       = f.rich_text_area :content, class: 'text'
     %div
       = f.label :tag_list,'タグ'
+    -# %div
+    -#   = f.select :category, options_for_select(@category_parent_array.map{|c|[c, {}]}, @board.category.parent.parent.name), {}, {class: 'select', id: 'parent_category'}
     %div
       = f.text_field :tag_list, value: @board.tag_list.join(','), class: "form-control"
     = f.submit '送信', data:{confirm:'送信しても良いですか？',disable_with:'処理中...'},class: 'btn-first'

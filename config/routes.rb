@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :unfollows, only: [:create]
   end
 
-  resource :profile, only:[:show, :edit, :update]
+  resource :profile, only:[:edit, :update]
   resources :users, only:[:index]
   resources :rooms, only:[:index, :show, :create]
   resources :messages, only:[:create]

@@ -79,7 +79,7 @@
               %i.fa.fa-edit.fa-2x.text-info
           .footer-sm-children.text-center
             -if user_signed_in?
-              = link_to profile_path do
+              = link_to account_path(current_user) do
                 %i.fa.fa-id-card.fa-2x.text-info
             -else
               = link_to new_user_registration_path do

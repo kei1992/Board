@@ -16,12 +16,15 @@
                 = u.profile.nickname.truncate(15)
             -else
               未設定
-          - if u.has_followed?(current_user)
+          - if current_user == u
+            = link_to account_path(current_user), class:'btn-mine btn btn-info' do
+              %p.mb-0.user-my-button プロフィール
+          - elsif u.has_followed?(current_user)
             = link_to account_unfollows_path(u),data:{method: 'post'},class:'btn-user-unfollow btn btn-info' do
-              %p.mb-0.user-follow-button.mb-0 フォロー中
+              %p.mb-0.user-follow-button フォロー中
           - else
-            = link_to account_follows_path(u),data:{method: 'post'},class:'btn-user-follow btn btn-info' do
-              %p.mb-0.user-follow-button.mb-0 フォローする
+            = link_to account_follows_path(u),data:{method: 'post'},class:'btn-user-follow btn' do
+              %p.mb-0.user-follow-button フォローする
         .row
           %p
             - if u.profile.present?
