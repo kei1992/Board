@@ -1,20 +1,40 @@
 .container.mt-5
   %ul
-  - @board.errors.full_messages.each do |message|
-    %li= message
+  -# - @board.errors.full_messages.each do |message|
+  -#   %li= message
   = form_with(model: @board, url: boards_path, method: 'post',local: true,class: 'mb-5') do |f|
-    %div.mt-3
-      = f.label :name, 'タイトル'
+    %div.title-introduction-content.d-flex.align-items-center
+      %div.mt-3.mr-auto
+        = f.label :name, '募集タイトル'
+      %div
+        %button.btn.btn-sm.btn-info#input-reset-btn タイトルをクリア
+    %div.text-left.text-warning.font-weight-bold.pb-1.hidden#title-introduction
+      募集のタイトルを入力しましょう(50文字以内)
+    %div.text-left.text-warning.font-weight-bold.hidden.pb-1#title-warning
+      50文字以内で入力してください
     %div
-      = f.text_field :name, class: 'text'
+      = f.text_field :name, class: 'text', id:'board-form-title-content'
+    %div.text-right
+      入力文字数:
+      %span.showTitleCount.text-info.font-weight-bold 0
+
+    %div.content-intoduction.d-flex.align-items-center.mt-5.mb-3
+      %div.mr-auto
+        = f.label :content, '募集内容'
+      %div
+        %button.btn.btn-sm.btn-info#input-content-reset-btn 内容をクリア
+    %div.text-left.text-warning.font-weight-bold.hidden.pb-1#content-introduction
+      募集の詳細を入力しましょう(1000文字以内)
+    %div.text-left.text-warning.font-weight-bold.hidden.pb-1#content-warning
+      1000文字以内で入力してください
     %div
-      = f.label :content, '内容'
-    %div
-      = f.rich_text_area :content, class: 'text'
+      = f.rich_text_area :content, class: 'text', id:'board-form-content'
+    %div.text-right
+      入力文字数:
+      %span.showCount.text-info.font-weight-bold 0
     %div
       = f.label :tag_list,'タグ'
-    -# %div
-    -#   = f.select :category, options_for_select(@category_parent_array.map{|c|[c, {}]}, @board.category.parent.parent.name), {}, {class: 'select', id: 'parent_category'}
     %div
       = f.text_field :tag_list, value: @board.tag_list.join(','), class: "form-control"
     = f.submit '送信', data:{confirm:'送信しても良いですか？',disable_with:'処理中...'},class: 'btn-first'
+    = javascript_pack_tag 'form'

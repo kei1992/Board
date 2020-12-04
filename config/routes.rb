@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'users/index'
   devise_for :users, controllers: {    omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations',
     passwords: 'users/passwords'
@@ -23,13 +22,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :accounts, only: [:show] do
+  resources :accounts, only: [:index,:show] do
     resources :follows, only: [:create]
     resources :unfollows, only: [:create]
   end
 
   resource :profile, only:[:edit, :update]
-  resources :users, only:[:index]
   resources :rooms, only:[:index, :show, :create]
   resources :messages, only:[:create]
 end

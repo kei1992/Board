@@ -1,6 +1,6 @@
 .container.mb-5
   %h2.py-3.text-info DM
-  = link_to "ユーザーの一覧に戻る", users_path
+  = link_to "ユーザーの一覧に戻る", users_index_path
   %hr/
   .message-container-parent.bg-white.p-3.mb-5
     - if @messages.present?
@@ -14,7 +14,7 @@
               - if m.user.profile.nickname.present?
                 = m.user.profile.nickname
               - else
-                Noname
+                未設定
             %p.mb-0.message-says.mx-2= m.content
         - else
           .message-container-reverse.d-flex.mb-3
@@ -25,14 +25,15 @@
               - if m.user.profile.nickname.present?
                 = m.user.profile.nickname
               - else
-                Noname
+                未設定
             %p.mb-0.message-says.mx-2= m.content
     - else
       %p.text-info.text-center メッセージはまだありません
     = form_for @message do |f|
       .row.align-items-center
         .col-12.col-md-9
-          = f.text_field :content, :placeholder => "メッセージを入力して下さい", class:'text mb-3 mb-md-0'
+          = f.text_field :content, :placeholder => "メッセージを入力して下さい", class:'text mb-3 mb-md-0',id:'message-content'
           = f.hidden_field :room_id, :value => @room.id
         .col-12.col-md-3.mb-5.mb-md-0
-          = f.submit "送信", class:'btn-first m-0'
+          = f.submit "送信", class:'btn btn-info m-0 w-100',id:'message-submit'
+  = javascript_pack_tag 'form'

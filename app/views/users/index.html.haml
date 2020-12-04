@@ -1,34 +1,90 @@
 .container.mb-5.pb-5
   %h2.mt-3.pt-3.text-info ユーザー
-  - @users.each do |u|
-    .row
-      - if u.has_followed?(current_user)
-        %p.px-3.text-info.font-weight-bold フォローされています。
-    .row.p-2
-      .col-2
-        = link_to account_path(u) do
-          =image_tag u.avatar_image, class:'avatar-image-sm mr-2'
-      .col-10
-        .row.mb-2
-          %p.mr-auto
-            - if u.profile.present?
-              = link_to account_path(u.id) do
-                = u.profile.nickname.truncate(15)
-            -else
-              未設定
-          - if current_user == u
-            = link_to account_path(current_user), class:'btn-mine btn btn-info' do
-              %p.mb-0.user-my-button プロフィール
-          - elsif u.has_followed?(current_user)
-            = link_to account_unfollows_path(u),data:{method: 'post'},class:'btn-user-unfollow btn btn-info' do
-              %p.mb-0.user-follow-button フォロー中
-          - else
-            = link_to account_follows_path(u),data:{method: 'post'},class:'btn-user-follow btn' do
-              %p.mb-0.user-follow-button フォローする
-        .row
-          %p
-            - if u.profile.present?
-              = u.profile.introduction.truncate(15)
-            - else
-              未設定
-    %hr
+  .tab_wrap.m-0.w-100
+    %input#tab1{checked: "checked", name: "tab_btn", type: "radio"}/
+    %input#tab2{name: "tab_btn", type: "radio"}/
+    .tab_area
+      %label.tab1_label{for: "tab1"} 相互フォロー
+      %label.tab2_label{for: "tab2"} ユーザー一覧
+    .panel_area
+      #panel1.tab_panel.px-3.py-3
+        - @users.each do |u|
+          - if u.has_followed?(current_user) && current_user.has_followed?(u)
+            .row
+              - if u.has_followed?(current_user)
+                %p.px-3.text-info.font-weight-bold フォローされています。
+            .row.p-2
+              .col-2
+                = link_to account_path(u) do
+                  =image_tag u.avatar_image, class:'avatar-image-sm mr-2'
+              .col-10
+                .row.mb-2
+                  %p.mr-auto
+                    - if u.profile.present?
+                      = link_to account_path(u.id) do
+                        = u.profile.nickname.truncate(25)
+                    -else
+                      未設定
+                  - if current_user == u
+                    = link_to account_path(current_user), class:'btn-mine btn btn-info' do
+                      %p.mb-0.user-my-button プロフィール
+                  - else
+                    -if current_user.has_followed?(u)
+                      = link_to account_unfollows_path(u),data:{method: 'post'},class:'btn-user-unfollow btn btn-info' do
+                        %p.mb-0.user-follow-button フォロー解除
+                    - else
+                      = link_to account_follows_path(u),data:{method: 'post'},class:'btn-user-follow btn' do
+                        %p.mb-0.user-follow-button フォロー
+                .row
+                  %p.mb-0.mr-auto
+                    - if u.profile.present?
+                      = u.profile.introduction.truncate(25)
+                    - else
+                      未設定
+                  %p.mb-0
+                    - if current_user.has_followed?(u) && u.has_followed?(current_user)
+                      = link_to account_path(u.id) do
+                        %i.fa.fa-envelope.text-info.m-0
+                    - else
+                      %i.fa.fa-envelope.m-0
+            %hr
+      #panel2.tab_panel.px-3.py-3
+        - @users.each do |u|
+          .row
+            - if u.has_followed?(current_user)
+              %p.px-3.text-info.font-weight-bold フォローされています。
+          .row.p-2
+            .col-2
+              = link_to account_path(u) do
+                =image_tag u.avatar_image, class:'avatar-image-sm mr-2'
+            .col-10
+              .row.mb-2
+                %p.mr-auto
+                  - if u.profile.present?
+                    = link_to account_path(u.id) do
+                      = u.profile.nickname.truncate(25)
+                  -else
+                    未設定
+                - if current_user == u
+                  = link_to account_path(current_user), class:'btn-mine btn btn-info' do
+                    %p.mb-0.user-my-button プロフィール
+                - else
+                  -if current_user.has_followed?(u)
+                    = link_to account_unfollows_path(u),data:{method: 'post'},class:'btn-user-unfollow btn btn-info' do
+                      %p.mb-0.user-follow-button フォロー解除
+                  - else
+                    = link_to account_follows_path(u),data:{method: 'post'},class:'btn-user-follow btn' do
+                      %p.mb-0.user-follow-button フォロー
+              .row
+                %p.mb-0.mr-auto
+                  - if u.profile.present?
+                    = u.profile.introduction.truncate(25)
+                  - else
+                    未設定
+                %p.mb-0
+                  - if current_user.has_followed?(u) && u.has_followed?(current_user)
+                    = link_to account_path(u.id) do
+                      %i.fa.fa-envelope.text-info.m-0
+                  - else
+                    %i.fa.fa-envelope.m-0
+          %hr
