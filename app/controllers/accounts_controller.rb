@@ -1,5 +1,9 @@
 class AccountsController < ApplicationController
-	before_action:authenticate_user!
+  before_action:authenticate_user!
+  def index
+    @user = User.all
+  end
+
 	def show
 		@user = User.find(params[:id])
     @currentUserEntry = Entry.where(user_id: current_user.id)
